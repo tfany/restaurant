@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.codeorder.mapper.OrderlistMapper" >
+  <resultMap id="BaseResultMap" type="com.codeorder.pojo.Orderlist" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="OrderId" property="orderid" jdbcType="INTEGER" />
+    <result column="DishId" property="dishid" jdbcType="INTEGER" />
+    <result column="Quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="Status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>
