@@ -8,8 +8,8 @@ import java.util.List;
 
 /**
  * 查询输入的用户名和密码是否和数据库匹配；
- *      如果匹配，返回查询到的所有结果
+ *      如果匹配，返回查询到的结果
  */
 public interface AdminMapper extends MyMapper<Admin> {
-    List<Admin> selAdmin(@Param("Name") String Name,@Param("Password") String Password);
+    Admin queryAdmin(@Param("Name") String Name,@Param("Password") String Password,@Param("Limit")Integer Limit);
 }

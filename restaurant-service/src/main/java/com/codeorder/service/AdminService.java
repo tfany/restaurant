@@ -8,5 +8,5 @@ import java.util.List;
  * 用户登录
  */
 public interface AdminService {
-    List<Admin> loginAdmin(String name,String password);
+    Admin loginAdmin(String name,String password,Integer limit);
 }

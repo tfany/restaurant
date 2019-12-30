@@ -15,9 +15,13 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @RequestMapping("/login")
-    public CommonResult<Object> loginAdmin(@RequestParam(value="UserName") String name,@RequestParam(value="password") String password){
-        List<Admin> list=adminService.loginAdmin(name,password);
-        return CommonResult.success(list);
+    @PostMapping ("/login")
+    public CommonResult<Object> loginAdmin(@RequestParam(value="UserName") String name,@RequestParam(value="password") String password,@RequestParam(value = "limit")Integer limit){
+        Admin admin=adminService.loginAdmin(name,password,limit);
+        if(admin!=null){
+            return CommonResult.success(admin);
+        }else {
+            return CommonResult.failed("用户名或密码错误");
+        }
     }
 }

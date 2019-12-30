@@ -11,7 +11,7 @@
     <result column="Limit" property="limit" jdbcType="INTEGER" />
   </resultMap>
 
-  <select id="selAdmin" resultType="com.codeorder.pojo.Admin">
-    select * from admin where Name=#{Name} and Password=#{Pagssword}
+  <select id="queryAdmin" resultType="com.codeorder.pojo.Admin">
+    select * from `admin` where `Name`=#{Name} and `Password`=#{Password} and `Limit`=#{Limit}
   </select>
 </mapper>
