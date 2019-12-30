@@ -11,4 +11,7 @@
     <result column="Url" property="url" jdbcType="VARCHAR" />
     <result column="Notice" property="notice" jdbcType="VARCHAR" />
   </resultMap>
+  <select id="queryShop" resultType="com.codeorder.pojo.Shop">
+    select * from shop
+  </select>
 </mapper>

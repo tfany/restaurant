@@ -13,7 +13,4 @@
     <result column="Picture" property="picture" jdbcType="VARCHAR" />
     <result column="Status" property="status" jdbcType="INTEGER" />
   </resultMap>
-  <delete id="deleteDish" parameterType="com.codeorder.pojo.Dish">
-        delete from dish where id=#{id}
-  </delete>
 </mapper>
