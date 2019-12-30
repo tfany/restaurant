@@ -13,4 +13,31 @@
     <result column="Picture" property="picture" jdbcType="VARCHAR" />
     <result column="Status" property="status" jdbcType="INTEGER" />
   </resultMap>
+
+  <select id="queryAllDish" resultType="com.codeorder.pojo.Dish">
+    select * from dish
+  </select>
+
+  <select id="queryDishByCategoryId" resultType="com.codeorder.pojo.Dish">
+    select * from dish where categoryid = #{categoryId}
+  </select>
+
+  <select id="queryDishByDishId" resultType="com.codeorder.pojo.Dish">
+    select * from dish where id = #{id}
+  </select>
+
+  <insert id="addDish" parameterType="com.codeorder.pojo.Dish" useGeneratedKeys="true" keyProperty="id">
+    insert into dish (name,price,detail,categoryid,picture,status)
+    values (#{name},#{price},#{detail},#{categoryid},#{picture},#{status})
+  </insert>
+
+  <delete id="deleteDishById" parameterType="int">
+    delete from dish where id = #{id}
+  </delete>
+
+  <update id="updateDish" parameterType="com.codeorder.pojo.Dish">
+    update dish set name = #{name} , price = #{price} , detail = #{detail} , categoryid = #{categoryid} ,picture = #{picture} ,status = #{status}
+    where id = #{id}
+  </update>
+
 </mapper>

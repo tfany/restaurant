@@ -18,7 +18,7 @@ public class CategoryController {
         category.setId(1);
         category.setName(categoryName);
         categoryService.addCategory(category);
-        return CommonResult.success(category);
+        return CommonResult.success("成功");
     }
 
     @GetMapping("/deleteCat")
