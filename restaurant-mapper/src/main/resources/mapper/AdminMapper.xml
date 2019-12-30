@@ -12,6 +12,6 @@
   </resultMap>
 
   <select id="selAdmin" resultType="com.codeorder.pojo.Admin">
-    select * from admin where Name=#{Name} and Password=#{Password}
+    select * from admin where Name=#{Name} and Password=#{Pagssword}
   </select>
 </mapper>
