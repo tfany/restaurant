@@ -40,4 +40,5 @@ public class DishController {
     public CommonResult<Object> updateDish(Dish dish){
         return CommonResult.success(dishService.updateDish(dish));
     }
+
 }

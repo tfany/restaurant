@@ -19,7 +19,7 @@
   </select>
 
   <select id="queryDishByCategoryId" resultType="com.codeorder.pojo.Dish">
-    select * from dish where categoryid = #{categoryId}
+    select * from dish where categoryId = #{categoryId}
   </select>
 
   <select id="queryDishByDishId" resultType="com.codeorder.pojo.Dish">
@@ -27,8 +27,8 @@
   </select>
 
   <insert id="addDish" parameterType="com.codeorder.pojo.Dish" useGeneratedKeys="true" keyProperty="id">
-    insert into dish (name,price,detail,categoryid,picture,status)
-    values (#{name},#{price},#{detail},#{categoryid},#{picture},#{status})
+    insert into dish (name,price,detail,categoryId,picture,status)
+    values (#{name},#{price},#{detail},#{categoryId},#{picture},#{status})
   </insert>
 
   <delete id="deleteDishById" parameterType="int">
@@ -36,7 +36,7 @@
   </delete>
 
   <update id="updateDish" parameterType="com.codeorder.pojo.Dish">
-    update dish set name = #{name} , price = #{price} , detail = #{detail} , categoryid = #{categoryid} ,picture = #{picture} ,status = #{status}
+    update dish set name = #{name} , price = #{price} , detail = #{detail} , categoryId = #{categoryId} ,picture = #{picture} ,status = #{status}
     where id = #{id}
   </update>
 
