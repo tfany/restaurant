@@ -28,5 +28,12 @@ public class CategoryController {
         return CommonResult.success(id);
     }
 
-
+    @RequestMapping("/updateCategory")
+    public CommonResult<String> updateCategory(Category category) {
+        Integer result = categoryService.updateCategory(category);
+        if (result == 1) {
+            return CommonResult.success("修改成功");
+        } else
+            return CommonResult.failed("修改失败");
+    }
 }
