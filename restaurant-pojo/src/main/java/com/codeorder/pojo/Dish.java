@@ -7,43 +7,43 @@ public class Dish {
      * 主键ID
      */
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
 
     /**
      * 菜品名称
      */
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
 
     /**
      * 菜品价格
      */
-    @Column(name = "Price")
+    @Column(name = "price")
     private Double price;
 
     /**
      * 菜品描述
      */
-    @Column(name = "Detail")
+    @Column(name = "detail")
     private String detail;
 
     /**
      * 菜品分类
      */
-    @Column(name = "CategoryId")
-    private Integer categoryid;
+    @Column(name = "categoryId")
+    private Integer categoryId;
 
     /**
      * 菜品图片路径，所有图片路径存放在一起，用分号分隔
      */
-    @Column(name = "Picture")
+    @Column(name = "picture")
     private String picture;
 
     /**
      * 菜品是否下架：1表示菜品储备不够；2表示菜品下架
      */
-    @Column(name = "Status")
+    @Column(name = "status")
     private Integer status;
 
     /**
@@ -123,17 +123,17 @@ public class Dish {
      *
      * @return CategoryId - 菜品分类
      */
-    public Integer getCategoryid() {
-        return categoryid;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
     /**
      * 设置菜品分类
      *
-     * @param categoryid 菜品分类
+     * @param categoryId 菜品分类
      */
-    public void setCategoryid(Integer categoryid) {
-        this.categoryid = categoryid;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     /**

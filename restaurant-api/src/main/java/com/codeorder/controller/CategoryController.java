@@ -10,7 +10,7 @@ import tk.mybatis.mapper.entity.Example;
 import java.util.List;
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping("manager")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
