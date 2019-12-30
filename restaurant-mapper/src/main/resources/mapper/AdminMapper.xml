@@ -10,4 +10,8 @@
     <result column="Password" property="password" jdbcType="VARCHAR" />
     <result column="Limit" property="limit" jdbcType="INTEGER" />
   </resultMap>
+
+  <select id="selAdmin" resultType="com.codeorder.pojo.Admin">
+    select * from admin where Name=#{Name} and Password=#{Password}
+  </select>
 </mapper>

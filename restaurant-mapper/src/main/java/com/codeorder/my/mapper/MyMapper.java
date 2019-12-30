@@ -24,8 +24,12 @@
 
 package com.codeorder.my.mapper;
 
+import com.codeorder.pojo.Admin;
+import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;
+
+import java.util.List;
 
 /**
  * 继承自己的MyMapper
