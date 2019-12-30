@@ -10,7 +10,7 @@ import tk.mybatis.mapper.entity.Example;
 import java.util.List;
 
 @RestController
-@RequestMapping("test")
+@RequestMapping("/test")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
@@ -28,5 +28,12 @@ public class CategoryController {
         return CommonResult.success(id);
     }
 
-
+    @RequestMapping("/updateCategory")
+    public CommonResult<String> updateCategory(Category category) {
+        Integer result = categoryService.updateCategory(category);
+        if (result == 1) {
+            return CommonResult.success("修改成功");
+        } else
+            return CommonResult.failed("修改失败");
+    }
 }
