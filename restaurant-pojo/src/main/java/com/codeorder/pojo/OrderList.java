@@ -2,36 +2,36 @@ package com.codeorder.pojo;
 
 import javax.persistence.*;
 
-public class Orderlist {
+public class OrderList {
     /**
      * 主键ID
      */
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
 
     /**
      * 订单ID
      */
-    @Column(name = "OrderId")
-    private Integer orderid;
+    @Column(name = "orderId")
+    private Integer orderId;
 
     /**
      * 菜品ID
      */
-    @Column(name = "DishId")
-    private Integer dishid;
+    @Column(name = "dishId")
+    private Integer dishId;
 
     /**
      * 菜品数量
      */
-    @Column(name = "Quantity")
+    @Column(name = "quantity")
     private Integer quantity;
 
     /**
      * 是否上菜
      */
-    @Column(name = "Status")
+    @Column(name = "status")
     private Integer status;
 
     /**
@@ -57,17 +57,17 @@ public class Orderlist {
      *
      * @return OrderId - 订单ID
      */
-    public Integer getOrderid() {
-        return orderid;
+    public Integer getOrderId() {
+        return orderId;
     }
 
     /**
      * 设置订单ID
      *
-     * @param orderid 订单ID
+     * @param orderId 订单ID
      */
-    public void setOrderid(Integer orderid) {
-        this.orderid = orderid;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     /**
@@ -75,17 +75,17 @@ public class Orderlist {
      *
      * @return DishId - 菜品ID
      */
-    public Integer getDishid() {
-        return dishid;
+    public Integer getDishId() {
+        return dishId;
     }
 
     /**
      * 设置菜品ID
      *
-     * @param dishid 菜品ID
+     * @param dishId 菜品ID
      */
-    public void setDishid(Integer dishid) {
-        this.dishid = dishid;
+    public void setDishId(Integer dishId) {
+        this.dishId = dishId;
     }
 
     /**

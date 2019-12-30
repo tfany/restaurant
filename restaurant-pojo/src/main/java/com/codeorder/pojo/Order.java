@@ -8,38 +8,38 @@ public class Order {
      * 主键ID
      */
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
 
     /**
      * 订单号
      */
-    @Column(name = "Number")
+    @Column(name = "number")
     private String number;
 
     /**
      * 桌号
      */
-    @Column(name = "TableNum")
-    private Integer tablenum;
+    @Column(name = "tableNum")
+    private Integer tableNum;
 
     /**
      * 订单生成日期
      */
-    @Column(name = "Date")
-    private Date date;
+    @Column(name = "createTime")
+    private Date createTime;
 
     /**
      * 总价格
      */
-    @Column(name = "Price")
+    @Column(name = "price")
     private Double price;
 
     /**
      * 状态（已付款或未付款）0付款，1未付款
      */
-    @Column(name = "PayStatus")
-    private Integer paystatus;
+    @Column(name = "payStatus")
+    private Integer payStatus;
 
     /**
      * 是否完单：0表示完单；1表示未完单
@@ -88,17 +88,17 @@ public class Order {
      *
      * @return TableNum - 桌号
      */
-    public Integer getTablenum() {
-        return tablenum;
+    public Integer getTableNum() {
+        return tableNum;
     }
 
     /**
      * 设置桌号
      *
-     * @param tablenum 桌号
+     * @param tableNum 桌号
      */
-    public void setTablenum(Integer tablenum) {
-        this.tablenum = tablenum;
+    public void setTableNum(Integer tableNum) {
+        this.tableNum = tableNum;
     }
 
     /**
@@ -106,17 +106,17 @@ public class Order {
      *
      * @return Date - 订单生成日期
      */
-    public Date getDate() {
-        return date;
+    public Date getCreateTime() {
+        return createTime;
     }
 
     /**
      * 设置订单生成日期
      *
-     * @param date 订单生成日期
+     * @param createTime 订单生成日期
      */
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     /**
@@ -142,17 +142,17 @@ public class Order {
      *
      * @return PayStatus - 状态（已付款或未付款）0付款，1未付款
      */
-    public Integer getPaystatus() {
-        return paystatus;
+    public Integer getPayStatus() {
+        return payStatus;
     }
 
     /**
      * 设置状态（已付款或未付款）0付款，1未付款
      *
-     * @param paystatus 状态（已付款或未付款）0付款，1未付款
+     * @param payStatus 状态（已付款或未付款）0付款，1未付款
      */
-    public void setPaystatus(Integer paystatus) {
-        this.paystatus = paystatus;
+    public void setPayStatus(Integer payStatus) {
+        this.payStatus = payStatus;
     }
 
     /**
