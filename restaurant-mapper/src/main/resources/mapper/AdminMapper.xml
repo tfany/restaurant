@@ -8,7 +8,7 @@
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="Name" property="name" jdbcType="VARCHAR" />
     <result column="Password" property="password" jdbcType="VARCHAR" />
-    <result column="Limit" property="limit" jdbcType="INTEGER" />
+    <result column="Limit" property="attribute" jdbcType="INTEGER" />
   </resultMap>
 
   <select id="queryAdmin" resultType="com.codeorder.pojo.Admin">

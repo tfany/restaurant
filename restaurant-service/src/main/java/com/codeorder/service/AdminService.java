@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface AdminService {
     Admin loginAdmin(String name,String password,Integer attribute);
+    Admin getAdmin(Integer id);
     int insertAdmin(String name,String password,Integer attribute);
 }

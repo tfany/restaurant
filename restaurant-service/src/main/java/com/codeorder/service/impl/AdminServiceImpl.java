@@ -19,6 +19,13 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public Admin getAdmin(Integer id) {
+        Admin admin = adminMapper.selectByPrimaryKey(id);
+        admin.setPassword(null);
+        return  admin;
+    }
+
+    @Override
     public int insertAdmin(String name, String password, Integer attribute) {
         return  adminMapper.insertAdmin(name,password,attribute);
     }

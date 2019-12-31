@@ -25,8 +25,8 @@ public class Admin {
     /**
      * 用户权限:1 代表管理员；2 代表 后厨；3 收银台
      */
-    @Column(name = "limit")
-    private Integer limit;
+    @Column(name = "attribute")
+    private Integer attribute;
 
     /**
      * 获取主键ID
@@ -87,16 +87,16 @@ public class Admin {
      *
      * @return Limit - 用户权限:1 代表管理员；2 代表 后厨；3 收银台
      */
-    public Integer getLimit() {
-        return limit;
+    public Integer getAttribute() {
+        return attribute;
     }
 
     /**
      * 设置用户权限:1 代表管理员；2 代表 后厨；3 收银台
      *
-     * @param limit 用户权限:1 代表管理员；2 代表 后厨；3 收银台
+     * @param attribute 用户权限:1 代表管理员；2 代表 后厨；3 收银台
      */
-    public void setLimit(Integer limit) {
-        this.limit = limit;
+    public void setAttribute(Integer attribute) {
+        this.attribute = attribute;
     }
 }
