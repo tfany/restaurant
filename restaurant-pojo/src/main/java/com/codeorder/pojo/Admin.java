@@ -87,7 +87,8 @@ public class Admin {
      *
      * @return Limit - 用户权限:1 代表管理员；2 代表 后厨；3 收银台
      */
-    public Integer getLimit() {
+
+    public Integer getAttribute() {
         return attribute;
     }
 

@@ -78,14 +78,14 @@
         </dependency>
 
 
+
         <!--加入分页插件-->
+
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.3</version>
         </dependency>
-
-
         <!--引入生成二维码的依赖-->
         <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
         <dependency>
@@ -104,6 +104,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
     </dependencies>
+
+
+
+
 
 </project>
