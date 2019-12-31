@@ -71,15 +71,12 @@
             <version>2.1.5</version>
         </dependency>
 
-<<<<<<< HEAD
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.11</version>
         </dependency>
 
-
-=======
 
         <!--加入分页插件-->
         <dependency>
@@ -88,8 +85,25 @@
             <version>1.2.3</version>
         </dependency>
 
->>>>>>> 6d39fac309cc32941dbe01014543720512d1bc5c
-    </dependencies>
 
+        <!--引入生成二维码的依赖-->
+        <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.zxing/javase -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

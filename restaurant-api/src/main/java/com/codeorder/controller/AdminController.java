@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("admin")
@@ -20,7 +19,7 @@ public class AdminController {
     private AdminService adminService;
 
     @PostMapping ("/login")
-    public CommonResult<Object> loginAdmin(@RequestParam(value="UserName") String name, @RequestParam(value="password") String password, @RequestParam(value = "attribute")Integer attribute, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public CommonResult<Object> loginAdmin(@RequestParam(value="userName") String name, @RequestParam(value="password") String password, @RequestParam(value = "attribute")Integer attribute, HttpServletRequest request, HttpServletResponse response) throws Exception {
         if(name!=null&&password!=null&&attribute!=null) {
             Admin admin = adminService.loginAdmin(name, MD5Utils.getMD5Str(password),attribute);
             if (admin != null) {
@@ -40,7 +39,7 @@ public class AdminController {
     }
 
     @PostMapping("/insertAdminInner")
-    public CommonResult<Object> insertAdmin(@RequestParam(value="UserName") String name, @RequestParam(value="password") String password, @RequestParam(value = "attribute")Integer attribute) throws Exception {
+    public CommonResult<Object> insertAdmin(@RequestParam(value="userName") String name, @RequestParam(value="password") String password, @RequestParam(value = "attribute")Integer attribute) throws Exception {
 
         Integer result=adminService.insertAdmin(name,MD5Utils.getMD5Str(password),attribute);
         if(result==1) {

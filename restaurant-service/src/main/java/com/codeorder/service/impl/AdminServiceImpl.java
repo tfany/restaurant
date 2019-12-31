@@ -14,7 +14,6 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
     @Override
     public Admin loginAdmin(String name,String password,Integer attribute) {
-
         return  adminMapper.queryAdmin(name,password,attribute);
     }
 
