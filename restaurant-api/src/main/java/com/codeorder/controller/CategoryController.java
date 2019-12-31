@@ -14,7 +14,6 @@ import java.util.List;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
-
     @RequestMapping("/addCategory")
     public CommonResult addCategory(@RequestParam String categoryName){
         int result = categoryService.addCategory(categoryName);
