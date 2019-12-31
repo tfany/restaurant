@@ -26,6 +26,10 @@
     select * from dish where id = #{id}
   </select>
 
+  <select id="queryDishByDishName" resultType="com.codeorder.pojo.Dish">
+    select * from dish where name = #{name}
+  </select>
+
   <insert id="addDish" parameterType="com.codeorder.pojo.Dish" useGeneratedKeys="true" keyProperty="id">
     insert into dish (name,price,detail,categoryId,picture,status)
     values (#{name},#{price},#{detail},#{categoryId},#{picture},#{status})

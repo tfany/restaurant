@@ -10,7 +10,7 @@ public interface DishService {
 
     int addDish(Dish dish);
 
-    List<Dish> queryDishByCategoryOrId(Integer pageSize,Integer pageNum,Integer id,Integer categoryId);
+    List<Dish> queryDishByCategoryOrName(Integer pageSize,Integer pageNum,String name,Integer categoryId);
 
     int deleteDish(Integer id);
 

@@ -15,6 +15,8 @@ public interface DishMapper extends MyMapper<Dish> {
 
     List<Dish> queryDishByDishId(@Param("id")Integer id);
 
+    List<Dish> queryDishByDishName(@Param("name")String name);
+
     int addDish(Dish dish);
 
     int deleteDishById(@Param("id")Integer id);

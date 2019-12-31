@@ -28,19 +28,19 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public List<Dish> queryDishByCategoryOrId(Integer pageSize, Integer pageNum,Integer id,Integer categoryId) {
+    public List<Dish> queryDishByCategoryOrName(Integer pageSize, Integer pageNum,String name,Integer categoryId) {
         if(pageSize!=null && pageNum!=null){
             PageHelper.startPage(pageNum, pageSize);
         }
         Long total = PageHelper.count(()->dishMapper.queryDishByCategoryId(categoryId));
-        if(id == null ){
+        if(name == null ){
             if(categoryId !=null){
                 System.out.println(total);
                 return dishMapper.queryDishByCategoryId(categoryId);
             }
             return null;
         }
-        else return dishMapper.queryDishByDishId(id);
+        else return dishMapper.queryDishByDishName(name);
     }
 
     @Override
