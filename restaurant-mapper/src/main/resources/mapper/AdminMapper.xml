@@ -12,6 +12,10 @@
   </resultMap>
 
   <select id="queryAdmin" resultType="com.codeorder.pojo.Admin">
-    select * from `admin` where `Name`=#{Name} and `Password`=#{Password} and `Limit`=#{Limit}
+    select * from `admin` where `Name`=#{Name} and `Password`=#{Password} and `attribute`=#{attribute}
   </select>
+
+  <insert id="insertAdmin" parameterType="com.codeorder.pojo.Admin">
+    INSERT INTO `admin` ('name', 'password', 'attribute') VALUES (#{Name}, #{Password}, #{attribute})
+  </insert>
 </mapper>

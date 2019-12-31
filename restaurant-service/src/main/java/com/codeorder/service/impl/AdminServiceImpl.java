@@ -13,7 +13,13 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminMapper adminMapper;
     @Override
-    public Admin loginAdmin(String name,String password,Integer limit) {
-        return  adminMapper.queryAdmin(name,password,limit);
+    public Admin loginAdmin(String name,String password,Integer attribute) {
+
+        return  adminMapper.queryAdmin(name,password,attribute);
+    }
+
+    @Override
+    public int insertAdmin(String name, String password, Integer attribute) {
+        return  adminMapper.insertAdmin(name,password,attribute);
     }
 }

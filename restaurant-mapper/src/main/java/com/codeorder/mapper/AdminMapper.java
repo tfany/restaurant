@@ -11,5 +11,6 @@ import java.util.List;
  *      如果匹配，返回查询到的结果
  */
 public interface AdminMapper extends MyMapper<Admin> {
-    Admin queryAdmin(@Param("Name") String Name,@Param("Password") String Password,@Param("Limit")Integer Limit);
+    Admin queryAdmin(@Param("Name") String Name,@Param("Password") String Password,@Param("attribute")Integer attribute);
+    int insertAdmin(@Param("Name") String Name,@Param("Password") String Password,@Param("attribute")Integer attribute);
 }
