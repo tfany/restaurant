@@ -4,6 +4,7 @@ import com.codeorder.mapper.DishMapper;
 import com.codeorder.pojo.Category;
 import com.codeorder.pojo.Dish;
 import com.codeorder.service.DishService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +26,9 @@ public class DishServiceImpl implements DishService {
         return dishMapper.addDish(dish);
     }
 
-    //TODO:这里需要添加分页信息
     @Override
     public List<Dish> queryDishByCategoryOrId(Integer pageSize, Integer pageNum,Integer id,Integer categoryId) {
+        PageHelper.startPage(pageNum, pageSize);
         if(id == null ){
             if(categoryId !=null){
                 return dishMapper.queryDishByCategoryId(categoryId);

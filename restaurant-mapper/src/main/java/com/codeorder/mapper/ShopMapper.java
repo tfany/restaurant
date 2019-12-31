@@ -4,4 +4,5 @@ import com.codeorder.my.mapper.MyMapper;
 import com.codeorder.pojo.Shop;
 
 public interface ShopMapper extends MyMapper<Shop> {
+    Shop queryShop();
 }

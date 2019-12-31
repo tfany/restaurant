@@ -53,6 +53,8 @@ mapper:
   not-empty: false
   identity: MYSQL
 
+
+##配置pagehelper分页
 pagehelper:
   helperDialect: mysql
   reasonable: true

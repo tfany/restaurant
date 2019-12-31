@@ -25,7 +25,6 @@ public class DishController {
         return CommonResult.success(dishService.addDish(dish));
     }
 
-    //TODO:这里需要添加分页信息
     @RequestMapping("/searchDish")
     public CommonResult<Object> searchDish(Integer pageSize, Integer pageNum,Integer id,Integer categoryId){
         return CommonResult.success(dishService.queryDishByCategoryOrId(pageSize,pageNum,id,categoryId));
