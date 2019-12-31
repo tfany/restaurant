@@ -5,6 +5,7 @@ import com.codeorder.pojo.Category;
 import com.codeorder.pojo.Dish;
 import com.codeorder.service.DishService;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.page.PageMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,9 +29,13 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public List<Dish> queryDishByCategoryOrId(Integer pageSize, Integer pageNum,Integer id,Integer categoryId) {
-        PageHelper.startPage(pageNum, pageSize);
+        if(pageSize!=null && pageNum!=null){
+            PageHelper.startPage(pageNum, pageSize);
+        }
+        Long total = PageHelper.count(()->dishMapper.queryDishByCategoryId(categoryId));
         if(id == null ){
             if(categoryId !=null){
+                System.out.println(total);
                 return dishMapper.queryDishByCategoryId(categoryId);
             }
             return null;
@@ -47,6 +52,5 @@ public class DishServiceImpl implements DishService {
     public int updateDish(Dish dish) {
         return dishMapper.updateDish(dish);
     }
-
 
 }
