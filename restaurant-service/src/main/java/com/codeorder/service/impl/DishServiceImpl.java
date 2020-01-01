@@ -21,10 +21,10 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public Map<String, Object> queryAllDish(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
-        List<Dish> list=dishMapper.queryAllDish();
-        PageInfo<Dish> pageInfo=new PageInfo<>(list);
-        return PageUtil.getPageInfo(pageInfo,list);
+        PageHelper.startPage(pageNum, pageSize);
+        List<Dish> list = dishMapper.queryAllDish();
+        PageInfo<Dish> pageInfo = new PageInfo<>(list);
+        return PageUtil.getPageInfo(pageInfo, list);
     }
 
     @Override
@@ -34,19 +34,16 @@ public class DishServiceImpl implements DishService {
 
     //TODO 模糊查询 联合查询
     @Override
-    public List<Dish> queryDishByCategoryOrName(Integer pageSize, Integer pageNum,String name,Integer categoryId) {
-        if(pageSize!=null && pageNum!=null){
-            PageHelper.startPage(pageNum, pageSize);
+    public Map<String, Object> queryDishByCategoryOrName(Integer pageNum, Integer pageSize, String name, Integer categoryId) {
+        if(name==null && categoryId==null)
+        {
+            return queryAllDish(pageNum,pageSize);
         }
-        Long total = PageHelper.count(()->dishMapper.queryDishByCategoryId(categoryId));
-        if(name == null ){
-            if(categoryId !=null){
-                System.out.println(total);
-                return dishMapper.queryDishByCategoryId(categoryId);
-            }
-            return null;
-        }
-        else return dishMapper.queryDishByDishName(name);
+        PageHelper.startPage(pageNum, pageSize);
+
+        List<Dish> list = dishMapper.queryDishByCategoryAndName(categoryId, name);
+        PageInfo<Dish> pageInfo=new PageInfo<>(list);
+        return PageUtil.getPageInfo(pageInfo,list);
     }
 
     @Override

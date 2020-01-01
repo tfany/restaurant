@@ -23,9 +23,15 @@ public class CategoryController {
     }
 
     @GetMapping("/deleteCat")
-    public CommonResult<Integer> deleteCategory(@RequestParam(value = "categoryId") int id) {
-        categoryService.deleteCategory(id);
-        return CommonResult.success(id);
+    public CommonResult deleteCategory(@RequestParam(value = "categoryId") int id){
+        int res=categoryService.deleteCategory(id);
+        if(res==1){
+            return CommonResult.success(null);
+        }
+        else{
+            return CommonResult.failed("操作失败,请检查输入的ID");
+        }
+
     }
 
     @PostMapping("/updateCategory")
