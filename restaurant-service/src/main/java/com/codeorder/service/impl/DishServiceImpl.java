@@ -1,15 +1,17 @@
 package com.codeorder.service.impl;
 
 import com.codeorder.mapper.DishMapper;
-import com.codeorder.pojo.Category;
 import com.codeorder.pojo.Dish;
 import com.codeorder.service.DishService;
+import com.codeorder.utils.PageUtil;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.page.PageMethod;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DishServiceImpl implements DishService {
@@ -18,8 +20,11 @@ public class DishServiceImpl implements DishService {
     private DishMapper dishMapper;
 
     @Override
-    public List<Dish> queryAllDish() {
-        return dishMapper.queryAllDish();
+    public Map<String, Object> queryAllDish(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Dish> list=dishMapper.queryAllDish();
+        PageInfo<Dish> pageInfo=new PageInfo<>(list);
+        return PageUtil.getPageInfo(pageInfo,list);
     }
 
     @Override
@@ -27,6 +32,7 @@ public class DishServiceImpl implements DishService {
         return dishMapper.addDish(dish);
     }
 
+    //TODO 模糊查询 联合查询
     @Override
     public List<Dish> queryDishByCategoryOrName(Integer pageSize, Integer pageNum,String name,Integer categoryId) {
         if(pageSize!=null && pageNum!=null){

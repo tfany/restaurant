@@ -3,10 +3,11 @@ package com.codeorder.service;
 import com.codeorder.pojo.Dish;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DishService {
 
-    List<Dish> queryAllDish();
+    Map<String,Object> queryAllDish(int pageNum, int pageSize);
 
     int addDish(Dish dish);
 
