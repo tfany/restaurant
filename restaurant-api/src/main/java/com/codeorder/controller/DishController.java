@@ -28,8 +28,8 @@ public class DishController {
     }
 
     @GetMapping("/searchDish")
-    public CommonResult<Object> searchDish(Integer pageSize, Integer pageNum,String name,Integer categoryId){
-        return CommonResult.success(dishService.queryDishByCategoryOrName(pageSize,pageNum,name,categoryId));
+    public CommonResult<Object> searchDish(Integer pageNum, Integer pageSize,String name,Integer categoryId){
+        return CommonResult.success(dishService.queryDishByCategoryOrName(pageNum,pageSize,name,categoryId));
     }
 
     @PostMapping("/deleteDish")

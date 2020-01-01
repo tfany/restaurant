@@ -11,7 +11,7 @@ public interface DishService {
 
     int addDish(Dish dish);
 
-    List<Dish> queryDishByCategoryOrName(Integer pageSize,Integer pageNum,String name,Integer categoryId);
+    Map<String,Object> queryDishByCategoryOrName(Integer pageNum,Integer pageSize,String name,Integer categoryId);
 
     int deleteDish(Integer id);
 
