@@ -7,10 +7,10 @@
     -->
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="Number" property="number" jdbcType="VARCHAR" />
-    <result column="TableNum" property="tablenum" jdbcType="INTEGER" />
-    <result column="Date" property="date" jdbcType="DATE" />
+    <result column="TableNum" property="tableNum" jdbcType="INTEGER" />
+    <result column="Date" property="createTime" jdbcType="DATE" />
     <result column="Price" property="price" jdbcType="DOUBLE" />
-    <result column="PayStatus" property="paystatus" jdbcType="INTEGER" />
+    <result column="PayStatus" property="payStatus" jdbcType="INTEGER" />
     <result column="Status" property="status" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

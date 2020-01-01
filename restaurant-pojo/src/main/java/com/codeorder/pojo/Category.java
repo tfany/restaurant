@@ -7,13 +7,13 @@ public class Category {
      * 主键ID
      */
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
 
     /**
      * 分类名称
      */
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
 
     /**

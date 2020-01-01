@@ -7,31 +7,31 @@ public class Shop {
      * 主键ID
      */
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
 
     /**
      * 店铺名称
      */
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
 
     /**
      * 店铺图片
      */
-    @Column(name = "Image")
+    @Column(name = "image")
     private String image;
 
     /**
      * 服务器地址
      */
-    @Column(name = "Url")
+    @Column(name = "url")
     private String url;
 
     /**
      * 店铺公告
      */
-    @Column(name = "Notice")
+    @Column(name = "notice")
     private String notice;
 
     /**

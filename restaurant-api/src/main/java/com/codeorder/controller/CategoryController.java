@@ -5,20 +5,20 @@ import com.codeorder.pojo.Category;
 import com.codeorder.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tk.mybatis.mapper.entity.Example;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("test")
+@RequestMapping("manager")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
-
     @RequestMapping("/addCategory")
-    public CommonResult<Object> addCategory(@RequestParam String categoryName){
-        Category category=new Category();
-        category.setId(1);
-        category.setName(categoryName);
-        categoryService.addCategory(category);
-        return CommonResult.success(category);
+    public CommonResult addCategory(@RequestParam String categoryName){
+        int result = categoryService.addCategory(categoryName);
+        if(result!=0) return CommonResult.success("添加成功");
+        return CommonResult.failed("该分类已存在");
     }
 
     @GetMapping("/deleteCat")
@@ -32,5 +32,12 @@ public class CategoryController {
         }
     }
 
-
+    @RequestMapping("/updateCategory")
+    public CommonResult<String> updateCategory(Category category) {
+        Integer result = categoryService.updateCategory(category);
+        if (result == 1) {
+            return CommonResult.success("修改成功");
+        } else
+            return CommonResult.failed("修改失败");
+    }
 }
