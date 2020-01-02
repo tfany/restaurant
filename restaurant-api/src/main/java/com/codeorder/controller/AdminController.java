@@ -19,15 +19,10 @@ public class AdminController {
     private AdminService adminService;
 
     @PostMapping ("/login")
-<<<<<<< HEAD
-    public CommonResult<Object> loginAdmin(@RequestParam(value="userName") String name, @RequestParam(value="password") String password, @RequestParam(value = "attribute")Integer attribute, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        if(name!=null&&password!=null&&attribute!=null) {
-            Admin admin = adminService.loginAdmin(name, MD5Utils.getMD5Str(password),attribute);
-=======
     public CommonResult<Object> loginAdmin(@RequestBody Admin loginAdmin, HttpServletRequest request, HttpServletResponse response) throws Exception {
         if(loginAdmin.getName()!=null&&loginAdmin.getPassword()!=null&&loginAdmin.getAttribute()!=null) {
             Admin admin = adminService.loginAdmin(loginAdmin.getName(), MD5Utils.getMD5Str(loginAdmin.getPassword()),loginAdmin.getAttribute());
->>>>>>> 809152d36b74f1fd90e1f2fe440906c20435d9b2
+
             if (admin != null) {
                 CookieUtils.setCookie(request, response, "sessionId",
                         String.valueOf(admin.getId()), true);

@@ -2,32 +2,36 @@
 package com.codeorder.controller;
 
 import com.codeorder.utils.CommonResult;
-import com.codeorder.utils.QrCodeUtils;
-
-import org.springframework.util.ResourceUtils;
-
+import com.codeorder.utils.QRCodeUtil;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 @RestController
 @RequestMapping("manager")
 public class QRCodeController {
 
-    @RequestMapping("/getQRcode")
-    public Comparable<String> qrcode(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            QrCodeUtils qrCodeUtil=new QrCodeUtils();
-            String  path= ResourceUtils.getURL("classpath:").getPath()+"/static/1.png";
-                         return qrCodeUtil.createQRCode("http://localhost:8088/login",300,300,path);
-        } catch (IOException e) {
-             e.printStackTrace();
-              return (Comparable<String>) CommonResult.failed("失败");
+    /**
+     *
+     * @param tableNum
+     * @return
+     */
+    @PostMapping("/getQRcode")
+    public CommonResult<URL> createQRCode(@Param("tableNum") int tableNum) {
+        boolean flag=QRCodeUtil.createQRCode(tableNum,"http://www.baidu.com");
+        if(flag) {
+            try {
+                URL url=new URL("http://www.baidu.com");
+                return CommonResult.success(url);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
+        return CommonResult.failed("二维码生成失败");
     }
 }
