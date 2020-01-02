@@ -29,6 +29,7 @@
   <!--查询全部订单-->
   <select id="queryAllOrder" resultType="com.codeorder.pojo.Order">
     select * from `order`
+
   </select>
   <select id="queryById" resultType="com.codeorder.pojo.Order">
     select * from `order` where `number` = #{orderId}
@@ -42,5 +43,6 @@
   <select id="getOrderIdByNumber" resultType="int">
   select id from `order`
   where `number` = #{number}
+
   </select>
 </mapper>
