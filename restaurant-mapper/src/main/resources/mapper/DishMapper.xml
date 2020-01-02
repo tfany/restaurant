@@ -13,4 +13,12 @@
     <result column="Picture" property="picture" jdbcType="VARCHAR" />
     <result column="Status" property="status" jdbcType="INTEGER" />
   </resultMap>
+
+  <insert id="addDish" parameterType="com.codeorder.pojo.Dish">
+    insert into dish(name,price,detail,categoryid,picture,status)
+    values (#{name},#{price},#{detail},#{categoryid},#{picture},#{status});
+  </insert>
+  <select id="queryDishByName" resultType="com.codeorder.pojo.Dish">
+    select * from dish where name = #{name};
+  </select>
 </mapper>

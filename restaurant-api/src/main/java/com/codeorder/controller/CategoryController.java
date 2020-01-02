@@ -10,19 +10,19 @@ import tk.mybatis.mapper.entity.Example;
 import java.util.List;
 
 @RestController
-@RequestMapping("test")
+@RequestMapping("manager")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping("/addCategory")
+    @PostMapping("/addCategory")
     public CommonResult addCategory(@RequestParam String categoryName){
         int result = categoryService.addCategory(categoryName);
-        if(result!=0) return CommonResult.success("添加成功");
+        if(result!=0) return CommonResult.success(null);
         return CommonResult.failed("该分类已存在");
     }
 
-    @GetMapping("/deleteCat")
+    @PostMapping("/deleteCat")
     public CommonResult<Integer> deleteCategory(@RequestParam(value = "categoryId") int id){
         categoryService.deleteCategory(id);
         return CommonResult.success(id);

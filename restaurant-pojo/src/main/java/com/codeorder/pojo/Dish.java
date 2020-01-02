@@ -14,7 +14,7 @@ public class Dish {
      * 菜品名称
      */
     @Column(name = "Name")
-    private String name;
+    public String name;
 
     /**
      * 菜品价格
