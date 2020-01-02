@@ -32,7 +32,6 @@ public class DishServiceImpl implements DishService {
         return dishMapper.addDish(dish);
     }
 
-    //TODO 模糊查询 联合查询
     @Override
     public Map<String, Object> queryDishByCategoryOrName(Integer pageNum, Integer pageSize, String name, Integer categoryId) {
         if(name==null && categoryId==null)
@@ -56,4 +55,8 @@ public class DishServiceImpl implements DishService {
         return dishMapper.updateDish(dish);
     }
 
+    @Override
+    public Dish queryDishById(Integer id) {
+        return dishMapper.selectByPrimaryKey(id);
+    }
 }

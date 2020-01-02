@@ -34,10 +34,10 @@
     select * from dish d
     where 1 = 1
     <choose>
-      <when test="categoryId == 0 and name !=null">
+      <when test="categoryId == null and name !=null">
         and d.name like "%"#{name,jdbcType=VARCHAR}"%"
       </when>
-      <when test="categoryId !=0 and name == null">
+      <when test="categoryId !=null and name == null">
         and d.categoryId = #{categoryId}
       </when>
       <otherwise>

@@ -17,4 +17,6 @@ public interface DishService {
 
     int updateDish(Dish dish);
 
+    Dish queryDishById(Integer id);
+
 }
