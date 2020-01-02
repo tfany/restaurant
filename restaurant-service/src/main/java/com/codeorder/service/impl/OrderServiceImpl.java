@@ -7,11 +7,13 @@ import com.codeorder.utils.PageUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
@@ -39,5 +41,22 @@ public class OrderServiceImpl implements OrderService {
         List<Order> list=orderMapper.queryAllOrder();
         PageInfo<Order> pageInfo = new PageInfo<>(list);
         return PageUtil.getPageInfo(pageInfo,list);
+    }
+
+    @Override
+    public Order queryById(String orderId) {
+        return orderMapper.queryById(orderId);
+    }
+
+    /*
+    * 改变订单状态
+    * */
+    @Override
+    public Integer changeStatus(String number,Integer newStatus) {
+        return orderMapper.changeStatus(number,newStatus);
+    }
+    @Override
+    public Integer getOrderIdByNumber(String number) {
+        return orderMapper.getOrderIdByNumber(number);
     }
 }

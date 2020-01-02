@@ -61,7 +61,7 @@
     delete from dish where categoryId = #{categoryId}
   </delete>
 
-  <update id="updateDish" parameterType="com.codeorder.pojo.Dish">
+  <update id="updateDish" parameterType="com.codeorder.pojo.Dish" >
     update dish set name = #{name} , price = #{price} , detail = #{detail} , categoryId = #{categoryId} ,picture = #{picture} ,status = #{status}
     where id = #{id}
   </update>
