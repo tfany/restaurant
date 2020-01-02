@@ -11,4 +11,10 @@
     <result column="Quantity" property="quantity" jdbcType="INTEGER" />
     <result column="Status" property="status" jdbcType="INTEGER" />
   </resultMap>
+
+  <!-- 添加订单项-->
+  <insert id="placeOrderList" parameterType="com.codeorder.pojo.OrderList" useGeneratedKeys="true" keyProperty="id">
+    insert into orderList (orderId,dishId,quantity,status)
+    values (#{orderId},#{dishId},#{quantity},#{status})
+  </insert>
 </mapper>

@@ -17,4 +17,6 @@ public interface DishService {
 
     int updateDish(Dish dish);
 
+    int deleteByCategoryId(Integer categoryId);
+
 }

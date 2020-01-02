@@ -26,10 +26,15 @@
     select * from dish where id = #{id}
   </select>
 
-  <select id="queryDishByDishName" resultType="com.codeorder.pojo.Dish">
-  select * from dish where name = #{name}
-</select>
+  <select id="queryPriceByDishId" resultType="com.codeorder.pojo.Dish">
+    select price from dish where id = #{id}
+  </select>
 
+  <select id="queryDishByDishName" resultType="com.codeorder.pojo.Dish">
+    select * from dish where name = #{name}
+  </select>
+
+  <!--菜品名和菜品分类组合查询-->
   <select id="queryDishByCategoryAndName" resultType="com.codeorder.pojo.Dish">
     select * from dish d
     where 1 = 1
@@ -53,6 +58,11 @@
 
   <delete id="deleteDishById" parameterType="int">
     delete from dish where id = #{id}
+  </delete>
+
+  <!--通过菜品分类删除菜品-->
+  <delete id="deleteDishByCategoryId" parameterType="int">
+    delete from dish where categoryId = #{categoryId}
   </delete>
 
   <update id="updateDish" parameterType="com.codeorder.pojo.Dish">

@@ -13,4 +13,27 @@
     <result column="PayStatus" property="payStatus" jdbcType="INTEGER" />
     <result column="Status" property="status" jdbcType="INTEGER" />
   </resultMap>
+
+  <!--按照时间段查询订单-->
+  <select id="queryOrderByTime" resultType="com.codeorder.pojo.Order">
+  select * from order
+  <where>
+    <if test="startTime != null and startTime !=''">
+      createDate >= #{startTime,jdbcType=DATE}
+    </if>
+    <if test="endTime != null and endTime !=''">
+      createDate <= #{endTime,jdbcType=DATE}
+    </if>
+  </where>
+  </select>
+  <!--查询全部订单-->
+  <select id="queryAllOrder" resultType="com.codeorder.pojo.Order">
+    select * from order
+  </select>
+
+  <!--购物车下单添加信息到订单-->
+  <insert id="placeOrder" parameterType="com.codeorder.pojo.Order" useGeneratedKeys="true" keyProperty="id">
+    insert into order (number,tableNum,createDate,price,payStatus,status)
+    values (#{number},#{tableNum},#{createDate},#{price},#{payStatus},#{status})
+  </insert>
 </mapper>
