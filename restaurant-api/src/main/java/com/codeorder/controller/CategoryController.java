@@ -1,5 +1,7 @@
 package com.codeorder.controller;
 
+import com.codeorder.service.DishService;
+import com.codeorder.service.impl.DishServiceImpl;
 import com.codeorder.utils.CommonResult;
 import com.codeorder.pojo.Category;
 import com.codeorder.service.CategoryService;
@@ -24,14 +26,14 @@ public class CategoryController {
 
     @GetMapping("/deleteCat")
     public CommonResult deleteCategory(@RequestParam(value = "categoryId") int id){
-        int res=categoryService.deleteCategory(id);
-        if(res==1){
-            return CommonResult.success(null);
+        DishService dishService=new DishServiceImpl();
+        //先删除菜品，再删除菜品分类。
+        int res1=dishService.deleteByCategoryId(id);
+        int res2=categoryService.deleteCategory(id);
+        if(res1==1&&res2==1){
+            return CommonResult.success(res1+res2);
         }
-        else{
-            return CommonResult.failed("操作失败,请检查输入的ID");
-        }
-
+        return CommonResult.failed("操作失败,请检查输入的ID");
     }
 
     @PostMapping("/updateCategory")

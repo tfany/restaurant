@@ -56,7 +56,14 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
+
     public Dish queryDishById(Integer id) {
         return dishMapper.selectByPrimaryKey(id);
     }
+
+    public int deleteByCategoryId(Integer categoryId) {
+        int res=dishMapper.deleteDishByCategoryId(categoryId);
+        return res;
+    }
+
 }
