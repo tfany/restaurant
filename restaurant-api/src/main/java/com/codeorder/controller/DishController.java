@@ -4,8 +4,8 @@ import com.codeorder.pojo.Dish;
 import com.codeorder.service.DishService;
 import com.codeorder.utils.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 
 @RestController
@@ -15,29 +15,35 @@ public class DishController {
     @Autowired
     private DishService dishService;
 
-    @RequestMapping("/dish")
-    public CommonResult<Object> showAllDish(){
-        return CommonResult.success(dishService.queryAllDish());
+    @GetMapping("/dish")
+    public CommonResult<Object> showAllDish(int pageNum,int pageSize){
+        return CommonResult.success(dishService.queryAllDish(pageNum,pageSize));
+    }
+    @PostMapping("/addDish")
+    public CommonResult addDish(@RequestBody Dish dish){
+        int result = dishService.addDish(dish);
+        if(result!=0)
+            return CommonResult.success(null);
+        return CommonResult.failed("该菜品已存在");
     }
 
-    @RequestMapping("/addDish")
-    public CommonResult<Object> addDish(Dish dish){
-        return CommonResult.success(dishService.addDish(dish));
+    @GetMapping("/searchDish")
+    public CommonResult<Object> searchDish(Integer pageNum, Integer pageSize,String name,Integer categoryId){
+        return CommonResult.success(dishService.queryDishByCategoryOrName(pageNum,pageSize,name,categoryId));
     }
 
-    @RequestMapping("/searchDish")
-    public CommonResult<Object> searchDish(Integer pageSize, Integer pageNum,String name,Integer categoryId){
-        return CommonResult.success(dishService.queryDishByCategoryOrName(pageSize,pageNum,name,categoryId));
-    }
-
-    @RequestMapping("/deleteDish")
+    @PostMapping("/deleteDish")
     public CommonResult<Object> deleteDish(Integer id){
         return CommonResult.success(dishService.deleteDish(id));
     }
 
-    @RequestMapping("/updateDish")
-    public CommonResult<Object> updateDish(Dish dish){
+    @PostMapping("/updateDish")
+    public CommonResult<Object> updateDish(@RequestBody Dish dish){
         return CommonResult.success(dishService.updateDish(dish));
     }
 
+    @GetMapping("/updateInfo/{id}")
+    public CommonResult<Object> queryDishById(@PathVariable Integer id){
+        return CommonResult.success(dishService.queryDishById(id));
+    }
 }
