@@ -9,7 +9,7 @@
     <result column="Name" property="name" jdbcType="VARCHAR" />
     <result column="Price" property="price" jdbcType="DOUBLE" />
     <result column="Detail" property="detail" jdbcType="VARCHAR" />
-    <result column="CategoryId" property="categoryid" jdbcType="INTEGER" />
+    <result column="CategoryId" property="categoryId" jdbcType="INTEGER" />
     <result column="Picture" property="picture" jdbcType="VARCHAR" />
     <result column="Status" property="status" jdbcType="INTEGER" />
   </resultMap>

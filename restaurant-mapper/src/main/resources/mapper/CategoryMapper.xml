@@ -8,5 +8,11 @@
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="Name" property="name" jdbcType="VARCHAR" />
   </resultMap>
+<<<<<<< HEAD
 
+=======
+  <update id="updateCategory" parameterType="com.codeorder.pojo.Category">
+        update category set name=#{name} where id=#{id}
+  </update>
+>>>>>>> bde2df733606bf66085d800445a591a4c7475035
 </mapper>
