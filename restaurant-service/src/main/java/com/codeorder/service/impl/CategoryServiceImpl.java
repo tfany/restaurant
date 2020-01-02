@@ -53,8 +53,7 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.updateCategory(category);
     }
 
-<<<<<<< HEAD
-=======
+
     @Override
     public Map<String, Object> categoryList(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
@@ -62,5 +61,5 @@ public class CategoryServiceImpl implements CategoryService {
         PageInfo<Category> pageInfo = new PageInfo<>(list);
         return PageUtil.getPageInfo(pageInfo, list);
     }
->>>>>>> cccc4c4bcd8b991a8a3343f8b903fda8e4bfcb05
+
 }

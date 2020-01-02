@@ -11,14 +11,14 @@
     <result column="Url" property="url" jdbcType="VARCHAR" />
     <result column="Notice" property="notice" jdbcType="VARCHAR" />
   </resultMap>
-<<<<<<< HEAD
+
   <select id="shopInfo" resultType="com.codeorder.pojo.Dish">
     select * from shop
   </select>
 
-=======
+
   <select id="queryShop" resultType="com.codeorder.pojo.Shop">
     select * from shop
   </select>
->>>>>>> cccc4c4bcd8b991a8a3343f8b903fda8e4bfcb05
+
 </mapper>

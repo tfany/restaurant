@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface DishMapper extends MyMapper<Dish> {
 
-<<<<<<< HEAD
+
     int addDish(Dish dish);
     List<Dish> queryDishByName(String dishName);
-=======
+
     List<Dish> queryAllDish();
 
     List<Dish> queryDishByCategoryId(@Param("categoryId") Integer categoryId);
@@ -25,11 +25,9 @@ public interface DishMapper extends MyMapper<Dish> {
 
     int deleteDishByCategoryId(@Param("categoryId")Integer categoryId);
 
-    int addDish(Dish dish);
 
     int deleteDishById(@Param("id")Integer id);
 
     int updateDish(Dish dish);
->>>>>>> cccc4c4bcd8b991a8a3343f8b903fda8e4bfcb05
 
 }

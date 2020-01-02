@@ -18,18 +18,6 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @PostMapping("/addCategory")
-<<<<<<< HEAD
-    public CommonResult addCategory(@RequestParam String categoryName){
-        int result = categoryService.addCategory(categoryName);
-        if(result!=0) return CommonResult.success(null);
-        return CommonResult.failed("该分类已存在");
-    }
-
-    @PostMapping("/deleteCat")
-    public CommonResult<Integer> deleteCategory(@RequestParam(value = "categoryId") int id){
-        categoryService.deleteCategory(id);
-        return CommonResult.success(id);
-=======
     public CommonResult addCategory(@RequestParam String categoryName) {
         int result = categoryService.addCategory(categoryName);
         if (result != 0) return CommonResult.success("添加成功");
@@ -46,7 +34,7 @@ public class CategoryController {
             return CommonResult.success(res1+res2);
         }
         return CommonResult.failed("操作失败,请检查输入的ID");
->>>>>>> cccc4c4bcd8b991a8a3343f8b903fda8e4bfcb05
+
     }
 
     @PostMapping("/updateCategory")
