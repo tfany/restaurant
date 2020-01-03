@@ -73,7 +73,8 @@ public class AdminController {
                 String md5Password = MD5Utils.getMD5Str(newPassword);
                 admin.setPassword(md5Password);
                 adminService.updatePassword(admin);
-            }
+            }else
+                return CommonResult.failed("修改失败");
         }
         return CommonResult.success("修改成功");
     }
