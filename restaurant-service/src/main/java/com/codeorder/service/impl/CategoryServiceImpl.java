@@ -1,7 +1,10 @@
 package com.codeorder.service.impl;
 
 import com.codeorder.mapper.CategoryMapper;
+import com.codeorder.mapper.DishMapper;
 import com.codeorder.pojo.Category;
+import com.codeorder.pojo.CategoryDto;
+import com.codeorder.pojo.Dish;
 import com.codeorder.service.CategoryService;
 import com.codeorder.utils.PageUtil;
 import com.github.pagehelper.PageHelper;
@@ -10,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +21,9 @@ import java.util.Map;
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
+
+    @Autowired
+    private DishMapper dishMapper;
 
     @Override
     public int addCategory(String categoryName) {
@@ -41,17 +48,28 @@ public class CategoryServiceImpl implements CategoryService {
         int res=categoryMapper.delete(category);
         return res;
     }
-
+    @Override
+    public Category getCategoryById(int categoryId) {
+        return categoryMapper.getCategoryById(categoryId);
+    }
     @Override
     public int updateCategory(Category category) {
         return categoryMapper.updateCategory(category);
     }
-
     @Override
     public Map<String, Object> categoryList(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<Category> list = categoryMapper.selectAll();
+        List<CategoryDto> countList=new ArrayList<>();
+        for (Category category : list) {
+            int id = category.getId();
+            Example example = new Example(Dish.class);
+            Example.Criteria criteria = example.createCriteria();
+            criteria.andEqualTo("categoryId", id);
+            int count=dishMapper.selectCountByExample(example);
+            countList.add(new CategoryDto(id, category.getName(),count));
+        }
         PageInfo<Category> pageInfo = new PageInfo<>(list);
-        return PageUtil.getPageInfo(pageInfo, list);
+        return PageUtil.getPageInfo(pageInfo, countList);
     }
 }
