@@ -19,10 +19,10 @@
   select * from `order`
   <where>
     <if test="startTime != null">
-      createDate &gt; #{startTime,jdbcType=DATE}
+      createDate &gt;= #{startTime,jdbcType=DATE}
     </if>
     <if test="endTime != null">
-      and createDate &lt; #{endTime,jdbcType=DATE}
+      and createDate &lt;= #{endTime,jdbcType=DATE}
     </if>
   </where>
   </select>
