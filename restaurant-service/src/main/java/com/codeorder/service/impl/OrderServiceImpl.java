@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order queryById(String orderId) {
+    public Order queryById(Integer orderId) {
         return orderMapper.queryById(orderId);
     }
 

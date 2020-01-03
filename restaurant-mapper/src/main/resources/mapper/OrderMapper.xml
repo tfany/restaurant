@@ -32,7 +32,7 @@
 
   </select>
   <select id="queryById" resultType="com.codeorder.pojo.Order">
-    select * from `order` where `number` = #{orderId}
+    select * from `order` where id = #{orderId}
   </select>
   <!--改变订单状态-->
   <update id="changeStatus" parameterType="com.codeorder.pojo.Order" >

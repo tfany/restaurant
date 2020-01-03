@@ -22,7 +22,7 @@ public class OrderController {
     }
 
     @GetMapping("/queryById")
-    public CommonResult<Object> queryById(String orderId){
+    public CommonResult<Object> queryById(Integer orderId){
         Order order=orderService.queryById(orderId);
         if(order==null){
             return CommonResult.failed("未查到订单！");
