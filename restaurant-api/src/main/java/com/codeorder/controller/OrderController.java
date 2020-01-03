@@ -22,9 +22,6 @@ public class OrderController {
         return CommonResult.success(orderService.queryOrderByTime(pageNum,pageSize,startTime,endTime));
     }
 
-    @RequestMapping("/placeOrder")
-    public CommonResult<Object> placeOrder(List<OrderList> detailList,Integer tableNum) {
-        return CommonResult.success(orderService.placeOrder(detailList,tableNum));
-    }
+
 
 }

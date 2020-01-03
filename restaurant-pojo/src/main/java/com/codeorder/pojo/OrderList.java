@@ -1,8 +1,9 @@
 package com.codeorder.pojo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-public class OrderList {
+public class OrderList implements Serializable {
     /**
      * 主键ID
      */
@@ -123,4 +124,5 @@ public class OrderList {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
 }

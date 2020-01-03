@@ -14,7 +14,7 @@
 
   <!-- 添加订单项-->
   <insert id="placeOrderList" parameterType="com.codeorder.pojo.OrderList" useGeneratedKeys="true" keyProperty="id">
-    insert into orderList (orderId,dishId,quantity,status)
+    insert into orderlist (orderId,dishId,quantity,status)
     values (#{orderId},#{dishId},#{quantity},#{status})
   </insert>
 </mapper>

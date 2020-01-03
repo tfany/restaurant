@@ -52,6 +52,12 @@ public class OrderServiceImpl implements OrderService {
         return PageUtil.getPageInfo(pageInfo,list);
     }
 
+    /**
+     *  顾客下单
+     * @param detailList  订单的菜品信息
+     * @param tableNum  下单的餐桌号
+     * @return
+     */
     @Override
     public int placeOrder(List<OrderList> detailList, Integer tableNum) {
         Date date = new Date();
@@ -59,11 +65,15 @@ public class OrderServiceImpl implements OrderService {
         CodeNumUtils codeNumUtils = new CodeNumUtils();
         String number = codeNumUtils.getCodeNumber();
         Double total = 0.0;
-        int orderId = orderMapper.placeOrder(order);
+        orderMapper.placeOrder(order);
+        int orderId = order.getId();
+        System.out.println("orderId");
+        System.out.println(orderId);
         for(OrderList orderList: detailList) {
             List<Dish> dishList = dishMapper.queryPriceByDishId(orderList.getDishId());
             orderList.setOrderId(orderId);
             orderList.setStatus(1);
+            System.out.println(orderList.getQuantity());
             orderListMapper.placeOrderList(orderList);
             for(Dish dish: dishList) {
                 total += dish.getPrice() * orderList.getQuantity();
@@ -71,13 +81,11 @@ public class OrderServiceImpl implements OrderService {
         }
         order.setNumber(number);
         order.setTableNum(tableNum);
-        order.setCreateTime(date);
+        order.setCreateDate(date);
         order.setPrice(total);
         order.setPayStatus(1);
         order.setStatus(1);
-        orderMapper.placeOrder(order);
-
-
+        orderMapper.updateOrder(order);
         return 0;
     }
 

@@ -14,6 +14,16 @@
     <result column="Status" property="status" jdbcType="INTEGER" />
   </resultMap>
 
+
+  <insert id="addDish" parameterType="com.codeorder.pojo.Dish">
+    insert into dish(name,price,detail,categoryid,picture,status)
+    values (#{name},#{price},#{detail},#{categoryid},#{picture},#{status});
+  </insert>
+
+  <select id="queryDishByName" resultType="com.codeorder.pojo.Dish">
+    select * from dish where name = #{name};
+  </select>
+
   <select id="queryAllDish" resultType="com.codeorder.pojo.Dish">
     select * from dish
   </select>
@@ -26,6 +36,7 @@
     select * from dish where id = #{id}
   </select>
 
+
   <select id="queryPriceByDishId" resultType="com.codeorder.pojo.Dish">
     select price from dish where id = #{id}
   </select>
@@ -34,15 +45,16 @@
     select * from dish where name = #{name}
   </select>
 
+
   <!--菜品名和菜品分类组合查询-->
   <select id="queryDishByCategoryAndName" resultType="com.codeorder.pojo.Dish">
     select * from dish d
     where 1 = 1
     <choose>
-      <when test="categoryId == 0 and name !=null">
+      <when test="categoryId == null and name !=null">
         and d.name like "%"#{name,jdbcType=VARCHAR}"%"
       </when>
-      <when test="categoryId !=0 and name == null">
+      <when test="categoryId !=null and name == null">
         and d.categoryId = #{categoryId}
       </when>
       <otherwise>
@@ -51,10 +63,7 @@
     </choose>
   </select>
 
-  <insert id="addDish" parameterType="com.codeorder.pojo.Dish" useGeneratedKeys="true" keyProperty="id">
-    insert into dish (name,price,detail,categoryId,picture,status)
-    values (#{name},#{price},#{detail},#{categoryId},#{picture},#{status})
-  </insert>
+
 
   <delete id="deleteDishById" parameterType="int">
     delete from dish where id = #{id}
@@ -69,5 +78,6 @@
     update dish set name = #{name} , price = #{price} , detail = #{detail} , categoryId = #{categoryId} ,picture = #{picture} ,status = #{status}
     where id = #{id}
   </update>
+
 
 </mapper>
