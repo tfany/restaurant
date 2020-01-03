@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
+
 @RestController
 @RequestMapping("/manager")
 public class DishController {
@@ -18,10 +19,12 @@ public class DishController {
     public CommonResult<Object> showAllDish(int pageNum,int pageSize){
         return CommonResult.success(dishService.queryAllDish(pageNum,pageSize));
     }
-
     @PostMapping("/addDish")
-    public CommonResult<Object> addDish(@RequestBody Dish dish){
-        return CommonResult.success(dishService.addDish(dish));
+    public CommonResult addDish(@RequestBody Dish dish){
+        int result = dishService.addDish(dish);
+        if(result!=0)
+            return CommonResult.success(null);
+        return CommonResult.failed("该菜品已存在");
     }
 
     @GetMapping("/searchDish")

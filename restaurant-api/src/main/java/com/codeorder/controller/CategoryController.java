@@ -35,6 +35,7 @@ public class CategoryController {
             return CommonResult.success(res1 + res2);
         }
         return CommonResult.failed("操作失败,请检查输入的ID");
+
     }
 
     @PostMapping("/updateCategory")

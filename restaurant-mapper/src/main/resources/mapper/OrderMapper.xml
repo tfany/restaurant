@@ -19,15 +19,30 @@
   select * from `order`
   <where>
     <if test="startTime != null and startTime !=''">
-      createDate >= #{startTime,jdbcType=DATE}
+      createDate &gt; #{startTime,jdbcType=DATE}
     </if>
     <if test="endTime != null and endTime !=''">
-      createDate !> #{endTime,jdbcType=DATE}
+      createDate &lt; #{endTime,jdbcType=DATE}
     </if>
   </where>
   </select>
   <!--查询全部订单-->
   <select id="queryAllOrder" resultType="com.codeorder.pojo.Order">
     select * from `order`
+
+  </select>
+  <select id="queryById" resultType="com.codeorder.pojo.Order">
+    select * from `order` where `number` = #{orderId}
+  </select>
+  <!--改变订单状态-->
+  <update id="changeStatus" parameterType="com.codeorder.pojo.Order" >
+    update `order` set `status`= #{status}
+    where `number`= #{number}
+  </update>
+  <!--通过number查id-->
+  <select id="getOrderIdByNumber" resultType="int">
+  select id from `order`
+  where `number` = #{number}
+
   </select>
 </mapper>

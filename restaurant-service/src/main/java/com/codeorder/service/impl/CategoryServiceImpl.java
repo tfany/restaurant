@@ -48,14 +48,27 @@ public class CategoryServiceImpl implements CategoryService {
         int res=categoryMapper.delete(category);
         return res;
     }
+
     @Override
     public Category getCategoryById(int categoryId) {
         return categoryMapper.getCategoryById(categoryId);
     }
+
+
+    //@Override
+    //public int updateCategory(String categoryName){
+
+    //}
+
+
+
     @Override
     public int updateCategory(Category category) {
         return categoryMapper.updateCategory(category);
     }
+
+
+
     @Override
     public Map<String, Object> categoryList(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
@@ -72,4 +85,5 @@ public class CategoryServiceImpl implements CategoryService {
         PageInfo<Category> pageInfo = new PageInfo<>(list);
         return PageUtil.getPageInfo(pageInfo, countList);
     }
+
 }
