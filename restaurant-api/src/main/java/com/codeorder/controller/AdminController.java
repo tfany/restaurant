@@ -20,7 +20,8 @@ public class AdminController {
 
     @PostMapping ("/login")
 
-    public CommonResult<Object> loginAdmin(@RequestBody Admin loginAdmin, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public CommonResult<Object> loginAdmin(@RequestBody Admin loginAdmin, HttpServletRequest request, HttpServletResponse response) throws Exception
+    {
         if(loginAdmin.getName()!=null&&loginAdmin.getPassword()!=null&&loginAdmin.getAttribute()!=null) {
             Admin admin = adminService.loginAdmin(loginAdmin.getName(), MD5Utils.getMD5Str(loginAdmin.getPassword()),loginAdmin.getAttribute());
             if (admin != null) {

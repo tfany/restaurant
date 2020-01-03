@@ -16,14 +16,12 @@ import java.util.List;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
-
     @PostMapping("/addCategory")
     public CommonResult addCategory(@RequestParam String categoryName) {
         int result = categoryService.addCategory(categoryName);
         if (result != 0) return CommonResult.success("添加成功");
         return CommonResult.failed("该分类已存在");
     }
-
     @GetMapping("/deleteCat")
     public CommonResult deleteCategory(@RequestParam(value = "categoryId") int id){
         DishService dishService=new DishServiceImpl();
@@ -35,7 +33,6 @@ public class CategoryController {
         }
         return CommonResult.failed("操作失败,请检查输入的ID");
     }
-
     @PostMapping("/updateCategory")
     public CommonResult<String> updateCategory(Category category) {
         Integer result = categoryService.updateCategory(category);
@@ -44,7 +41,6 @@ public class CategoryController {
         } else
             return CommonResult.failed("修改失败");
     }
-
     //显示所有子分类
     @GetMapping("category")
     public CommonResult<Object> list(Integer pageNum, Integer pageSize) {

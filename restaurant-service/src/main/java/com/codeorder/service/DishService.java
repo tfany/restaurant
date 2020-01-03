@@ -8,9 +8,9 @@ import java.util.Map;
 public interface DishService {
 
     Map<String,Object> queryAllDish(int pageNum, int pageSize);
+    List<Dish> queryAllDish();
 
     int addDish(Dish dish);
-
     Map<String,Object> queryDishByCategoryOrName(Integer pageNum,Integer pageSize,String name,Integer categoryId);
 
     int deleteDish(Integer id);

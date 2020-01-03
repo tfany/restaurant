@@ -66,4 +66,10 @@ public class DishServiceImpl implements DishService {
         return res;
     }
 
+    @Override
+    public List<Dish> queryAllDish()
+    {
+        return dishMapper.queryAllDish();
+    }
+
 }
