@@ -8,7 +8,14 @@
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="Name" property="name" jdbcType="VARCHAR" />
   </resultMap>
+
+
+
   <update id="updateCategory" parameterType="com.codeorder.pojo.Category">
         update category set name=#{name} where id=#{id}
   </update>
+
+  <select id="getCategoryById" resultType="com.codeorder.pojo.Category">
+    select * from category where id = #{categoryId}
+  </select>
 </mapper>

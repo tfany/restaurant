@@ -14,6 +14,15 @@
     <result column="Status" property="status" jdbcType="INTEGER" />
   </resultMap>
 
+
+  <insert id="addDish" parameterType="com.codeorder.pojo.Dish">
+    insert into dish(name,price,detail,categoryid,picture,status)
+    values (#{name},#{price},#{detail},#{categoryid},#{picture},#{status});
+  </insert>
+  <select id="queryDishByName" resultType="com.codeorder.pojo.Dish">
+    select * from dish where name = #{name};
+  </select>
+
   <select id="queryAllDish" resultType="com.codeorder.pojo.Dish">
     select * from dish
   </select>
@@ -26,9 +35,6 @@
     select * from dish where id = #{id}
   </select>
 
-  <select id="queryDishByDishName" resultType="com.codeorder.pojo.Dish">
-    select * from dish where name = #{name}
-  </select>
 
   <!--菜品名和菜品分类组合查询-->
   <select id="queryDishByCategoryAndName" resultType="com.codeorder.pojo.Dish">
@@ -47,10 +53,7 @@
     </choose>
   </select>
 
-  <insert id="addDish" parameterType="com.codeorder.pojo.Dish" useGeneratedKeys="true" keyProperty="id">
-    insert into dish (name,price,detail,categoryId,picture,status)
-    values (#{name},#{price},#{detail},#{categoryId},#{picture},#{status})
-  </insert>
+
 
   <delete id="deleteDishById" parameterType="int">
     delete from dish where id = #{id}
@@ -61,9 +64,10 @@
     delete from dish where categoryId = #{categoryId}
   </delete>
 
-  <update id="updateDish" parameterType="com.codeorder.pojo.Dish">
+  <update id="updateDish" parameterType="com.codeorder.pojo.Dish" >
     update dish set name = #{name} , price = #{price} , detail = #{detail} , categoryId = #{categoryId} ,picture = #{picture} ,status = #{status}
     where id = #{id}
   </update>
+
 
 </mapper>

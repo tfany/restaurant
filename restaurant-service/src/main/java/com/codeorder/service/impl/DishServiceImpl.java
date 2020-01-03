@@ -1,5 +1,4 @@
 package com.codeorder.service.impl;
-
 import com.codeorder.mapper.DishMapper;
 import com.codeorder.pojo.Dish;
 import com.codeorder.service.DishService;
@@ -9,17 +8,24 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class DishServiceImpl implements DishService {
 
+
     @Autowired
     private DishMapper dishMapper;
 
     @Override
+    public int addDish(Dish dish) {
+        if(dishMapper.queryDishByName(dish.getName())!=null)
+            return 0;
+        return dishMapper.addDish(dish);
+    }
+
+
     public Map<String, Object> queryAllDish(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<Dish> list = dishMapper.queryAllDish();
@@ -27,10 +33,6 @@ public class DishServiceImpl implements DishService {
         return PageUtil.getPageInfo(pageInfo, list);
     }
 
-    @Override
-    public int addDish(Dish dish) {
-        return dishMapper.addDish(dish);
-    }
 
     @Override
     public Map<String, Object> queryDishByCategoryOrName(Integer pageNum, Integer pageSize, String name, Integer categoryId) {
@@ -73,3 +75,4 @@ public class DishServiceImpl implements DishService {
     }
 
 }
+

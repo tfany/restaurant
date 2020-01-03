@@ -13,8 +13,10 @@ public class Dish {
     /**
      * 菜品名称
      */
+
     @Column(name = "name")
     private String name;
+
 
     /**
      * 菜品价格
