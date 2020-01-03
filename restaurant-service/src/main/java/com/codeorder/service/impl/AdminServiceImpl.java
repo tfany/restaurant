@@ -30,10 +30,13 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public Admin queryAdminByIdAndPassword(Integer id, String password) {
+        return adminMapper.queryAdminByIdAndPassword(id,password);
+    }
+
+
+    @Override
     public int updatePassword(Admin admin) {
-        if((adminMapper.queryAdminById(admin.getId()).isEmpty())){
-            return 0;
-        }
         return adminMapper.updatePassword(admin);
     }
 }

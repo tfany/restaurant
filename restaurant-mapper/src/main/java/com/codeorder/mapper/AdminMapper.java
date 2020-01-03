@@ -18,4 +18,12 @@ public interface AdminMapper extends MyMapper<Admin> {
     int updatePassword(Admin admin);
 
     List<Admin> queryAdminById(@Param("id")Integer id);
+
+    /**
+     * 通过id和password查询用户
+     * @param id
+     * @param password
+     * @return
+     */
+    Admin queryAdminByIdAndPassword(@Param("id") Integer id , @Param("password") String password);
 }

@@ -28,4 +28,8 @@
   <select id="queryAdminById" parameterType="int" resultType="com.codeorder.pojo.Admin">
     select * from admin where id = #{id}
   </select>
+
+  <select id="queryAdminByIdAndPassword" resultType="com.codeorder.pojo.Admin">
+    select * from admin where id = #{id} and password = #{password}
+  </select>
 </mapper>
