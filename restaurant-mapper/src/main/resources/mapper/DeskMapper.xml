@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.codeorder.mapper.DeskMapper" >
+    <resultMap id="BaseResultMap" type="com.codeorder.pojo.Desk" >
+        <!--
+          WARNING - @mbg.generated
+        -->
+
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="deskNum" property="deskNum" jdbcType="INTEGER" />
+        <result column="url" property="url" jdbcType="VARCHAR" />
+
+    </resultMap>
+    <insert id="insertDesk" parameterType="com.codeorder.pojo.Desk">
+        INSERT INTO `desk` (`deskNum`, `url`) VALUES (#{deskNum}, #{url});
+    </insert>
+
+
+</mapper>
