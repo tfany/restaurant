@@ -18,11 +18,11 @@
   <select id="queryOrderByTime" resultType="com.codeorder.pojo.Order">
   select * from `order`
   <where>
-    <if test="startTime != null and startTime !=''">
+    <if test="startTime != null">
       createDate &gt; #{startTime,jdbcType=DATE}
     </if>
-    <if test="endTime != null and endTime !=''">
-      createDate &lt; #{endTime,jdbcType=DATE}
+    <if test="endTime != null">
+      and createDate &lt; #{endTime,jdbcType=DATE}
     </if>
   </where>
   </select>
