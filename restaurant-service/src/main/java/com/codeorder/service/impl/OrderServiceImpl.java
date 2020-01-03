@@ -52,6 +52,7 @@ public class OrderServiceImpl implements OrderService {
         return PageUtil.getPageInfo(pageInfo,list);
     }
 
+
     /**
      *  顾客下单
      * @param detailList  订单的菜品信息
@@ -91,7 +92,7 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public Order queryById(String orderId) {
+    public Order queryById(Integer orderId) {
         return orderMapper.queryById(orderId);
     }
 

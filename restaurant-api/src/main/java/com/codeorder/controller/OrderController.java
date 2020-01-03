@@ -23,7 +23,7 @@ public class OrderController {
     }
 
     @GetMapping("/queryById")
-    public CommonResult<Object> queryById(String orderId){
+    public CommonResult<Object> queryById(Integer orderId){
         Order order=orderService.queryById(orderId);
         if(order==null){
             return CommonResult.failed("未查到订单！");
@@ -32,8 +32,8 @@ public class OrderController {
     }
 
     @GetMapping("/queryAllOrder")
-    public CommonResult<Object> queryAllOrder(){
-        return CommonResult.success(orderService.queryAllOrder(1,1));
+    public CommonResult<Object> queryAllOrder(Integer pageNum,Integer pageSize){
+        return CommonResult.success(orderService.queryAllOrder(pageNum,pageSize));
     }
 
     @PostMapping("/settleAccount")

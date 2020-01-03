@@ -6,12 +6,12 @@
       WARNING - @mbg.generated
     -->
     <id column="Id" property="id" jdbcType="INTEGER" />
-    <result column="Number" property="number" jdbcType="VARCHAR" />
-    <result column="TableNum" property="tableNum" jdbcType="INTEGER" />
-    <result column="Date" property="createDate" jdbcType="DATE" />
-    <result column="Price" property="price" jdbcType="DOUBLE" />
-    <result column="PayStatus" property="payStatus" jdbcType="INTEGER" />
-    <result column="Status" property="status" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="tableNum" property="tableNum" jdbcType="INTEGER" />
+    <result column="createDate" property="createDate" jdbcType="DATE" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="payStatus" property="payStatus" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
 
   <!--按照时间段查询订单-->
@@ -32,7 +32,7 @@
 
   </select>
   <select id="queryById" resultType="com.codeorder.pojo.Order">
-    select * from `order` where `number` = #{orderId}
+    select * from `order` where id = #{orderId}
   </select>
   <!--改变订单状态-->
   <update id="changeStatus" parameterType="com.codeorder.pojo.Order" >

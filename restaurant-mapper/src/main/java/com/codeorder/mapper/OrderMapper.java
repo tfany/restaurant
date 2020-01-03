@@ -9,6 +9,7 @@ public interface OrderMapper extends MyMapper<Order> {
     List<Order> queryOrderByTime(Date startTime, Date endTime);
     List<Order> queryAllOrder();
 
+
     /**
      * 添加一条订单信息
      * @param order
@@ -24,7 +25,8 @@ public interface OrderMapper extends MyMapper<Order> {
     int updateOrder(Order order);
 
 
-    Order queryById(String orderId);
+    Order queryById(Integer orderId);
+
     Integer changeStatus(String number,Integer status);
     Integer getOrderIdByNumber(String number);
 }
