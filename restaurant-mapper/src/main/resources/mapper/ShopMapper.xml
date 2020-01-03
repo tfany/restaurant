@@ -12,7 +12,7 @@
     <result column="Notice" property="notice" jdbcType="VARCHAR" />
   </resultMap>
 
-  <select id="shopInfo" resultType="com.codeorder.pojo.Dish">
+  <select id="shopInfo" resultType="com.codeorder.pojo.Shop">
     select * from shop
   </select>
 

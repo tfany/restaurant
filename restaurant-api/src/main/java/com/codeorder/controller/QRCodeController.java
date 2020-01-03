@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.MalformedURLException;
@@ -27,7 +28,7 @@ public class QRCodeController {
      * @return
      */
     @PostMapping("/getQRcode")
-    public CommonResult<URL> createQRCode(@Param("tableNum") int tableNum) {
+    public CommonResult<URL> createQRCode(@RequestParam("tableNum") int tableNum) {
         Shop shop=shopService.shopInfo();
         if(shop.getUrl()!=null){
             boolean flag=QRCodeUtil.createQRCode(tableNum,shop.getUrl());
