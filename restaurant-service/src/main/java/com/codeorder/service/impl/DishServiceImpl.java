@@ -1,6 +1,7 @@
 package com.codeorder.service.impl;
 import com.codeorder.mapper.DishMapper;
 import com.codeorder.pojo.Dish;
+import com.codeorder.pojo.Shop;
 import com.codeorder.service.DishService;
 import com.codeorder.utils.PageUtil;
 import com.github.pagehelper.PageHelper;
@@ -20,7 +21,11 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public int addDish(Dish dish) {
-        if(dishMapper.queryDishByName(dish.getName())!=null)
+        if (dish.getName()==null||dish.getPrice()==null||dish.getCategoryId()==null){     //添加的菜品没有名字或价格或分类
+            return -1;
+        }
+        List<Dish> result = dishMapper.queryDishByName(dish.getName());
+        if(result.size()!=0)          //菜单中已有该菜品
             return 0;
         return dishMapper.addDish(dish);
     }

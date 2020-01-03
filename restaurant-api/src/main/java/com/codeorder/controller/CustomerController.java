@@ -31,7 +31,7 @@ public class CustomerController {
 
     @GetMapping
     public CommonResult<Object> showHomePage() {
-        Shop shop = shopService.queryShop();
+        Shop shop = shopService.shopInfo();
         List<Dish> dishList = dishService.queryAllDish();
         if (dishList.size() < 1) {
             return CommonResult.failed();

@@ -90,6 +90,12 @@ public class OrderServiceImpl implements OrderService {
         return 0;
     }
 
+    /*
+     * 查看订单详情
+     */
+    public List<OrderList> queryOrderByOrderId(Integer orderId) {
+        return orderMapper.queryOrderByOrderId(orderId);
+    }
 
     @Override
     public Order queryById(Integer orderId) {
