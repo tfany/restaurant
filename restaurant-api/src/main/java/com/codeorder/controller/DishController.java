@@ -21,10 +21,12 @@ public class DishController {
     }
     @PostMapping("/addDish")
     public CommonResult addDish(@RequestBody Dish dish){
-        int result = dishService.addDish(dish);
-        if(result!=0)
-            return CommonResult.success(null);
-        return CommonResult.failed("该菜品已存在");
+        int result = dishService.addDish(dish);                       //返回添加菜品结果
+        if(result==0)                                                 //菜品已存在
+            return CommonResult.failed("该菜品已存在！");
+        if(result==-1)
+            return CommonResult.failed("添加菜品失败！");              //添加的菜品没有名字或价格或分类
+        return CommonResult.success(null);
     }
 
     @GetMapping("/searchDish")

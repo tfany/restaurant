@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+import java.util.List;
+
 public interface OrderListMapper extends MyMapper<OrderList> {
 
     /**
@@ -27,4 +29,10 @@ public interface OrderListMapper extends MyMapper<OrderList> {
      * @return
      */
     List<Integer> queryOrderListByOrderId(@Param("orderId") Integer orderId);
+    /**
+     * 添加订单菜品的详细信息
+     * @param orderList
+     * @return
+     */
+    int placeOrderList(OrderList orderList);
 }

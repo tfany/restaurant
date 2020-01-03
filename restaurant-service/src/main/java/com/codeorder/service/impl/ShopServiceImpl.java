@@ -22,16 +22,13 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public Shop shopInfo() {
-        return shopMapper.selectAll().get(0);
+        List<Shop> shops = shopMapper.shopInfo();
+        Shop shop =shops.get(0);
+        return shop;
     }
     @Override
     public int updateShop(Shop shop) {
         return shopMapper.updateByPrimaryKey(shop);
     }
 
-
-
-    public Shop queryShop() {
-        return shopMapper.queryShop();
-    }
 }

@@ -19,9 +19,9 @@ public class ShopController {
         return CommonResult.success(shop);
     }
     @PostMapping("/updateShop")
-    public CommonResult updateShop(@RequestParam Shop shop){
+    public CommonResult updateShop(@RequestBody Shop shop){
         int result = shopService.updateShop(shop);
-        if(result==0) return CommonResult.success(null);
+        if(result!=0) return CommonResult.success(null);
         return CommonResult.failed("更新失败");
     }
 

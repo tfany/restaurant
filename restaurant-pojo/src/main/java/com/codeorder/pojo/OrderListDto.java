@@ -25,5 +25,4 @@ public class OrderListDto {
     public void setTableNum(Integer tableNum) {
         this.tableNum = tableNum;
     }
-
 }
