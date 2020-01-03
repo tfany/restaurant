@@ -2,8 +2,6 @@ package com.codeorder.mapper;
 
 import com.codeorder.my.mapper.MyMapper;
 import com.codeorder.pojo.Order;
-import com.sun.org.apache.xpath.internal.operations.Or;
-
 import java.util.Date;
 import java.util.List;
 
@@ -25,4 +23,8 @@ public interface OrderMapper extends MyMapper<Order> {
      */
     int updateOrder(Order order);
 
+
+    Order queryById(String orderId);
+    Integer changeStatus(String number,Integer status);
+    Integer getOrderIdByNumber(String number);
 }

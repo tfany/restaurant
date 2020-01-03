@@ -90,4 +90,21 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
+    @Override
+    public Order queryById(String orderId) {
+        return orderMapper.queryById(orderId);
+    }
+
+    /*
+    * 改变订单状态
+    * */
+    @Override
+    public Integer changeStatus(String number,Integer newStatus) {
+        return orderMapper.changeStatus(number,newStatus);
+    }
+    @Override
+    public Integer getOrderIdByNumber(String number) {
+        return orderMapper.getOrderIdByNumber(number);
+    }
+
 }

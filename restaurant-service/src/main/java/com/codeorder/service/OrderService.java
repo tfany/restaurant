@@ -1,7 +1,9 @@
 package com.codeorder.service;
 
 import com.codeorder.pojo.Order;
+
 import com.codeorder.pojo.OrderList;
+
 
 import java.util.Date;
 import java.util.List;
@@ -11,4 +13,7 @@ public interface OrderService {
     Map<String,Object> queryOrderByTime(Integer pageNum, Integer pageSize,Date startTime, Date endTime);
     Map<String,Object> queryAllOrder(Integer pageNum, Integer pageSize);
     int placeOrder(List<OrderList> detailList,Integer tableNum);
+    Order queryById(String orderId);
+    Integer changeStatus(String number,Integer newStatus);
+    Integer getOrderIdByNumber(String number);
 }

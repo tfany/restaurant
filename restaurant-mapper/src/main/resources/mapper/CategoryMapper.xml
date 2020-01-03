@@ -15,4 +15,7 @@
         update category set name=#{name} where id=#{id}
   </update>
 
+  <select id="getCategoryById" resultType="com.codeorder.pojo.Category">
+    select * from category where id = #{categoryId}
+  </select>
 </mapper>
