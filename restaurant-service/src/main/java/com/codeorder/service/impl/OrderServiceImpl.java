@@ -1,11 +1,14 @@
 package com.codeorder.service.impl;
 
+import com.codeorder.mapper.OrderListMapper;
 import com.codeorder.mapper.OrderMapper;
 import com.codeorder.pojo.Order;
+import com.codeorder.pojo.OrderList;
 import com.codeorder.service.OrderService;
 import com.codeorder.utils.PageUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderMapper orderMapper;
+
+    @Autowired
+    private OrderListMapper orderListMapper;
 
     /*
     * 按照时间段查询
@@ -55,8 +61,16 @@ public class OrderServiceImpl implements OrderService {
     public Integer changeStatus(String number,Integer newStatus) {
         return orderMapper.changeStatus(number,newStatus);
     }
+
     @Override
     public Integer getOrderIdByNumber(String number) {
         return orderMapper.getOrderIdByNumber(number);
     }
+
+    @Override
+    public int updateOrderStatusById(Integer id) {
+        return orderMapper.updateOrderStatusById(id,0);
+    }
+
+
 }

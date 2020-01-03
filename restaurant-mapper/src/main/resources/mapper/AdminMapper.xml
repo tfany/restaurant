@@ -20,4 +20,12 @@
   <insert id="insertAdmin" parameterType="com.codeorder.pojo.Admin">
     INSERT INTO `admin` ('name', 'password', 'attribute') VALUES (#{Name}, #{Password}, #{attribute})
   </insert>
+
+  <update id="updatePassword" parameterType="com.codeorder.pojo.Admin">
+    update admin set password = #{password} where id = #{id}
+  </update>
+
+  <select id="queryAdminById" parameterType="int" resultType="com.codeorder.pojo.Admin">
+    select * from admin where id = #{id}
+  </select>
 </mapper>

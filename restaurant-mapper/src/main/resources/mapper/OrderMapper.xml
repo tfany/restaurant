@@ -34,15 +34,18 @@
   <select id="queryById" resultType="com.codeorder.pojo.Order">
     select * from `order` where `number` = #{orderId}
   </select>
-  <!--改变订单状态-->
+  <!--改变订单支付状态-->
   <update id="changeStatus" parameterType="com.codeorder.pojo.Order" >
-    update `order` set `status`= #{status}
+    update `order` set `payStatus`= #{payStatus}
     where `number`= #{number}
   </update>
   <!--通过number查id-->
   <select id="getOrderIdByNumber" resultType="int">
   select id from `order`
   where `number` = #{number}
-
   </select>
+
+  <update id="updateOrderStatusById" parameterType="int">
+    update `order` set status = #{status} where id = #{id}
+  </update>
 </mapper>

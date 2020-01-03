@@ -33,6 +33,7 @@ public class OrderController {
     public CommonResult<Object> queryAllOeder(){
         return CommonResult.success(orderService.queryAllOrder(1,1));
     }
+
     @GetMapping("/settleAcount")
     public CommonResult<Object> settleAcount(String number)
     {

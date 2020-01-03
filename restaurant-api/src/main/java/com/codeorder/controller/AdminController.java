@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("admin")
+@RequestMapping("/admin")
 public class AdminController {
     @Autowired
     private AdminService adminService;
@@ -49,10 +49,27 @@ public class AdminController {
         return CommonResult.failed("添加失败");
     }
 
-    @GetMapping("info")
+    @GetMapping("/info")
     public CommonResult<Admin> getInfo(HttpServletRequest request,HttpServletResponse response){
         return CommonResult.success(null);
     }
+
+    @PostMapping("/modifyPassword")
+    public CommonResult<String> modifyPassword(@RequestBody Admin admin) throws Exception {
+        String password = admin.getPassword();
+        if(password == null){
+            return CommonResult.failed("修改失败");
+        }
+        System.out.println(password);
+        String md5Password = MD5Utils.getMD5Str(password);
+        admin.setPassword(md5Password);
+        int result = adminService.updatePassword(admin);
+        if(result == 0){
+            return CommonResult.failed("修改失败");
+        }
+        return CommonResult.success("修改成功");
+    }
+
 
 
 }

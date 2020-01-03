@@ -20,9 +20,12 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public int addDish(Dish dish) {
-        if(dishMapper.queryDishByName(dish.getName())!=null)
+        if(!(dishMapper.queryDishByName(dish.getName())).isEmpty()){
             return 0;
+        }
+        System.out.println(dishMapper.addDish(dish));
         return dishMapper.addDish(dish);
+
     }
 
 
