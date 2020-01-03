@@ -5,6 +5,7 @@ import com.codeorder.service.OrderService;
 import com.codeorder.utils.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
@@ -34,8 +35,8 @@ public class OrderController {
         return CommonResult.success(orderService.queryAllOrder(1,1));
     }
 
-    @GetMapping("/settleAccont")
-    public CommonResult<Object> settleAccont(String number)
+    @PostMapping("/settleAccount")
+    public CommonResult<Object> settleAccount(String number)
     {
         int res=orderService.changeStatus(number,1);
         return CommonResult.success(res);

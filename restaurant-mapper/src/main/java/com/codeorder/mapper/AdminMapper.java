@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface AdminMapper extends MyMapper<Admin> {
 
-    Admin queryAdmin(@Param("Name") String Name,@Param("Password") String Password,@Param("attribute")Integer attribute);
-    int insertAdmin(@Param("Name") String Name,@Param("Password") String Password,@Param("attribute")Integer attribute);
+    Admin queryAdmin(@Param("name") String Name,@Param("password") String Password,@Param("attribute")Integer attribute);
+    int insertAdmin(@Param("name") String Name,@Param("password") String Password,@Param("attribute")Integer attribute);
 
 }
