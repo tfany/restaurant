@@ -26,8 +26,8 @@ public class Order {
     /**
      * 订单生成日期
      */
-    @Column(name = "createTime")
-    private Date createTime;
+    @Column(name = "createDate")
+    private Date createDate;
 
     /**
      * 总价格
@@ -106,17 +106,17 @@ public class Order {
      *
      * @return Date - 订单生成日期
      */
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreateDate() {
+        return createDate;
     }
 
     /**
      * 设置订单生成日期
      *
-     * @param createTime 订单生成日期
+     * @param createDate 订单生成日期
      */
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     /**

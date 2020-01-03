@@ -31,8 +31,8 @@ public class OrderController {
     }
 
     @GetMapping("/queryAllOrder")
-    public CommonResult<Object> queryAllOrder(){
-        return CommonResult.success(orderService.queryAllOrder(1,1));
+    public CommonResult<Object> queryAllOrder(Integer pageNum,Integer pageSize){
+        return CommonResult.success(orderService.queryAllOrder(pageNum,pageSize));
     }
 
     @PostMapping("/settleAccount")
