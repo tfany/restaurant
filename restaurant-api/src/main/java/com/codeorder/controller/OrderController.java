@@ -29,12 +29,13 @@ public class OrderController {
         return CommonResult.success(order);
     }
 
-    @GetMapping("/queryAllOeder")
-    public CommonResult<Object> queryAllOeder(){
+    @GetMapping("/queryAllOrder")
+    public CommonResult<Object> queryAllOrder(){
         return CommonResult.success(orderService.queryAllOrder(1,1));
     }
-    @GetMapping("/settleAcount")
-    public CommonResult<Object> settleAcount(String number)
+
+    @GetMapping("/settleAccont")
+    public CommonResult<Object> settleAccont(String number)
     {
         int res=orderService.changeStatus(number,1);
         return CommonResult.success(res);

@@ -16,6 +16,9 @@ import java.util.List;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private DishService dishService;
+
 
     @PostMapping("/addCategory")
     public CommonResult addCategory(@RequestParam String categoryName) {
@@ -25,16 +28,11 @@ public class CategoryController {
     }
 
     @GetMapping("/deleteCat")
-    public CommonResult deleteCategory(@RequestParam(value = "categoryId") int id){
-        DishService dishService=new DishServiceImpl();
+    public CommonResult deleteCategory(@RequestParam(value = "categoryId") int id) {
         //先删除菜品，再删除菜品分类。
-        int res1=dishService.deleteByCategoryId(id);
-        int res2=categoryService.deleteCategory(id);
-        if(res1==1&&res2==1){
-            return CommonResult.success(res1+res2);
-        }
-        return CommonResult.failed("操作失败,请检查输入的ID");
-
+        int res1 = dishService.deleteByCategoryId(id);
+        String res2=String.valueOf(categoryService.deleteCategory(id));
+        return CommonResult.success(res1,res2);
     }
 
     @PostMapping("/updateCategory")

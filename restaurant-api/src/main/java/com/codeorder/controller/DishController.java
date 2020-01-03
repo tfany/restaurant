@@ -32,7 +32,7 @@ public class DishController {
         return CommonResult.success(dishService.queryDishByCategoryOrName(pageNum,pageSize,name,categoryId));
     }
 
-    @PostMapping("/deleteDish")
+    @GetMapping("/deleteDish")
     public CommonResult<Object> deleteDish(Integer id){
         return CommonResult.success(dishService.deleteDish(id));
     }

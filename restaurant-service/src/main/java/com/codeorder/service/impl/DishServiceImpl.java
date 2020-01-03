@@ -65,8 +65,7 @@ public class DishServiceImpl implements DishService {
     }
 
     public int deleteByCategoryId(Integer categoryId) {
-        int res=dishMapper.deleteDishByCategoryId(categoryId);
-        return res;
+        return dishMapper.deleteDishByCategoryId(categoryId);
     }
 
 }
