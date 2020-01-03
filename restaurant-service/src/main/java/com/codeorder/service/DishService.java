@@ -9,13 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 public interface DishService {
-    int addDish(Dish dish);
-    //int deleteDish(int DishId);
 
     Map<String,Object> queryAllDish(int pageNum, int pageSize);
+    List<Dish> queryAllDish();
 
-
-    Map<String,Object> queryDishByCategoryOrName(Integer pageNum, Integer pageSize, String name, Integer categoryId);
+    int addDish(Dish dish);
+    Map<String,Object> queryDishByCategoryOrName(Integer pageNum,Integer pageSize,String name,Integer categoryId);
 
     int deleteDish(Integer id);
 

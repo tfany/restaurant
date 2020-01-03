@@ -9,13 +9,11 @@ public class Category {
     @Id
     @Column(name = "id")
     private Integer id;
-
     /**
      * 分类名称
      */
     @Column(name = "name")
     private String name;
-
     /**
      * 获取主键ID
      *
@@ -24,7 +22,6 @@ public class Category {
     public Integer getId() {
         return id;
     }
-
     /**
      * 设置主键ID
      *

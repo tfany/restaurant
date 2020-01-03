@@ -11,7 +11,6 @@ public class CommonResult<T> {
 
     protected CommonResult() {
     }
-
     protected CommonResult(long code, String message, T data) {
         this.code = code;
         this.message = message;
@@ -55,6 +54,16 @@ public class CommonResult<T> {
 
     /**
      * 失败返回结果
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
      */
     public static <T> CommonResult<T> failed() {
         return failed(ResultCode.FAILED);
