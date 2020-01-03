@@ -2,6 +2,8 @@ package com.codeorder.mapper;
 
 import com.codeorder.my.mapper.MyMapper;
 import com.codeorder.pojo.Order;
+import com.codeorder.pojo.OrderList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -23,10 +25,8 @@ public interface OrderMapper extends MyMapper<Order> {
      * @return
      */
     int updateOrder(Order order);
-
-
     Order queryById(Integer orderId);
-
     Integer changeStatus(String number,Integer status);
     Integer getOrderIdByNumber(String number);
+    List<OrderList> queryOrderByOrderId(Integer orderId);
 }

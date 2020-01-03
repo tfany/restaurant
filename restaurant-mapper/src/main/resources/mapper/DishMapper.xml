@@ -16,8 +16,8 @@
 
 
   <insert id="addDish" parameterType="com.codeorder.pojo.Dish">
-    insert into dish(name,price,detail,categoryid,picture,status)
-    values (#{name},#{price},#{detail},#{categoryid},#{picture},#{status});
+    insert into dish(name,price,detail,categoryId,picture,status)
+    values (#{name},#{price},#{detail},#{categoryId},#{picture},#{status});
   </insert>
 
   <select id="queryDishByName" resultType="com.codeorder.pojo.Dish">

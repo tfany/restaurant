@@ -62,4 +62,11 @@ public class OrderController {
         return CommonResult.success(res);
     }
 
+    @GetMapping("/orderDetail")
+    public CommonResult<Object> orderDetail(Integer orderId){
+        if(orderService.queryOrderByOrderId(orderId)==null)
+            return CommonResult.failed("不存在该订单");
+        return CommonResult.success(orderService.queryOrderByOrderId(orderId));
+    }
+
 }
