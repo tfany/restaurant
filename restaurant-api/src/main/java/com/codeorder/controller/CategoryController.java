@@ -62,6 +62,10 @@ public class CategoryController {
     //根据id获取分类
     @GetMapping("getCategoryId")
     public CommonResult<Object> getCategory(Integer id) {
+        Category category=categoryService.getCategoryById(id);
+        if(category==null){
+            return CommonResult.failed("没有该分类!");
+        }
         return CommonResult.success(categoryService.getCategoryById(id));
     }
 
