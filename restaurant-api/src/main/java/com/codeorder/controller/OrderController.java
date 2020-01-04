@@ -53,7 +53,7 @@ public class OrderController {
     @PostMapping("/settleAccount")
     public CommonResult<Object> settleAccount(String number)
     {
-        int res=orderService.changeStatus(number,1);
+        int res=orderService.changeStatus(number,0);
         return CommonResult.success(res);
     }
     @GetMapping("/getOrderIdByNumber")
