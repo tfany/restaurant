@@ -39,12 +39,18 @@ public class CategoryController {
         return CommonResult.success(res1,res2);
     }
     @PostMapping("/updateCategory")
-    public CommonResult<String> updateCategory(@RequestBody Category category) {
+    public CommonResult<Object> updateCategory(@RequestBody Category category) {
         Integer result = categoryService.updateCategory(category);
-        if (result == 1) {
-            return CommonResult.success("修改成功");
-        } else
-            return CommonResult.failed("修改失败");
+        if (result == -1) {
+            return CommonResult.failed("修改失败，分类名为空！");
+        }
+        if (result == 0) {
+            return CommonResult.failed("修改失败，分类中已有该分类！");
+        }
+        if (result == -2) {
+            return CommonResult.failed("修改失败，未找到分类id！");
+        }
+        return CommonResult.success("修改成功！");
     }
     //显示所有子分类
     @GetMapping("category")
