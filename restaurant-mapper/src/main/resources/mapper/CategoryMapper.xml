@@ -18,4 +18,5 @@
   <select id="getCategoryById" resultType="com.codeorder.pojo.Category">
     select * from category where id = #{categoryId}
   </select>
+
 </mapper>
