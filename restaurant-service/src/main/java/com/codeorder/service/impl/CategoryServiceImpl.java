@@ -27,6 +27,9 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public int addCategory(String categoryName) {
+        if (categoryName.trim().isEmpty()){     //添加的分类名字
+            return -1;
+        }
         Example example = new Example(Category.class);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("name", categoryName);

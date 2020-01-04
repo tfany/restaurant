@@ -26,8 +26,9 @@ public class CategoryController {
     @PostMapping("/addCategory")
     public CommonResult addCategory(@RequestParam String categoryName) {
         int result = categoryService.addCategory(categoryName);
-        if (result != 0) return CommonResult.success("添加成功");
-        return CommonResult.failed("该分类已存在");
+        if (result == 0) return CommonResult.failed("该分类已存在");
+        if (result == -1) return CommonResult.failed("添加分类失败");
+        return CommonResult.success("添加成功");
     }
     @PostMapping("/deleteCat")
     public CommonResult deleteCategory(@RequestParam(value = "categoryId") int id) {
