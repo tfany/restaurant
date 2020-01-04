@@ -22,6 +22,7 @@ public class DishServiceImpl implements DishService {
     @Override
     public int addDish(Dish dish) {
 
+
         if (dish.getName().trim().isEmpty()||dish.getPrice()==null||dish.getCategoryId()==null||dish.getPrice()<0){     //添加的菜品没有名字或价格或分类
             return -1;
         }

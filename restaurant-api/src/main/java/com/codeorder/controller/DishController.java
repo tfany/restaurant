@@ -39,7 +39,7 @@ public class DishController {
         return CommonResult.success(dishService.deleteDish(id));
     }
 
-    @PostMapping("/updat,eDish")
+    @PostMapping("/updateDish")
     public CommonResult<Object> updateDish(@RequestBody Dish dish){
         return CommonResult.success(dishService.updateDish(dish));
     }
