@@ -28,4 +28,15 @@ public class AdminServiceImpl implements AdminService {
     public int insertAdmin(String name, String password, Integer attribute) {
         return  adminMapper.insertAdmin(name,password,attribute);
     }
+
+    @Override
+    public Admin queryAdminByIdAndPassword(Integer id, String password) {
+        return adminMapper.queryAdminByIdAndPassword(id,password);
+    }
+
+
+    @Override
+    public int updatePassword(Admin admin) {
+        return adminMapper.updatePassword(admin);
+    }
 }

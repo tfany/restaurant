@@ -15,13 +15,14 @@
   </resultMap>
 
 
-  <insert id="addDish" parameterType="com.codeorder.pojo.Dish">
+
+  <insert id="addDish" parameterType="com.codeorder.pojo.Dish" useGeneratedKeys="true" keyProperty="id">
     insert into dish(name,price,detail,categoryId,picture,status)
     values (#{name},#{price},#{detail},#{categoryId},#{picture},#{status});
   </insert>
 
   <select id="queryDishByName" resultType="com.codeorder.pojo.Dish">
-    select * from dish where name = #{name};
+    select * from dish where `name` = #{name};
   </select>
 
   <select id="queryAllDish" resultType="com.codeorder.pojo.Dish">

@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RestController
@@ -18,8 +22,17 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping("/queryByTime")
-    public CommonResult<Object> queryByTime(Integer pageNum, Integer pageSize,Date startTime,Date endTime){
-        return CommonResult.success(orderService.queryOrderByTime(pageNum,pageSize,startTime,endTime));
+    public CommonResult<Object> queryByTime(Integer pageNum, Integer pageSize,String startTime,String endTime){
+        DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+        Date start;
+        Date end;
+        try{
+            start=format.parse(startTime);
+            end=format.parse(endTime);
+        }catch (ParseException e){
+            return CommonResult.failed("输入时间有误，请重新输入！");
+        }
+        return CommonResult.success(orderService.queryOrderByTime(pageNum,pageSize,start,end));
     }
 
     @GetMapping("/queryById")
@@ -36,10 +49,11 @@ public class OrderController {
         return CommonResult.success(orderService.queryAllOrder(pageNum,pageSize));
     }
 
+
     @PostMapping("/settleAccount")
     public CommonResult<Object> settleAccount(String number)
     {
-        int res=orderService.changeStatus(number,1);
+        int res=orderService.changeStatus(number,0);
         return CommonResult.success(res);
     }
     @GetMapping("/getOrderIdByNumber")

@@ -2,6 +2,7 @@ package com.codeorder.mapper;
 
 import com.codeorder.my.mapper.MyMapper;
 import com.codeorder.pojo.Order;
+import org.apache.ibatis.annotations.Param;
 import com.codeorder.pojo.OrderList;
 
 import java.util.Date;
@@ -26,7 +27,14 @@ public interface OrderMapper extends MyMapper<Order> {
      */
     int updateOrder(Order order);
     Order queryById(Integer orderId);
-    Integer changeStatus(String number,Integer status);
+    Integer changeStatus(String number,Integer payStatus);
     Integer getOrderIdByNumber(String number);
+
+    /**
+     * 修改订单完单状态
+     * @return
+     */
+    int updateOrderStatusById(@Param("id") Integer id , @Param("status") Integer status);
+
     List<OrderList> queryOrderByOrderId(Integer orderId);
 }

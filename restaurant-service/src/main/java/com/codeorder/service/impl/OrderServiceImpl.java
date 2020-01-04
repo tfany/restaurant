@@ -28,6 +28,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderListMapper orderListMapper;
 
+
     /*
     * 按照时间段查询
     * */
@@ -109,9 +110,16 @@ public class OrderServiceImpl implements OrderService {
     public Integer changeStatus(String number,Integer newStatus) {
         return orderMapper.changeStatus(number,newStatus);
     }
+
     @Override
     public Integer getOrderIdByNumber(String number) {
         return orderMapper.getOrderIdByNumber(number);
     }
+
+    @Override
+    public int updateOrderStatusById(Integer id) {
+        return orderMapper.updateOrderStatusById(id,0);
+    }
+
 
 }

@@ -29,7 +29,7 @@ public class CategoryController {
         if (result != 0) return CommonResult.success("添加成功");
         return CommonResult.failed("该分类已存在");
     }
-    @GetMapping("/deleteCat")
+    @PostMapping("/deleteCat")
     public CommonResult deleteCategory(@RequestParam(value = "categoryId") int id) {
         //先删除菜品，再删除菜品分类。
         int res1 = dishService.deleteByCategoryId(id);

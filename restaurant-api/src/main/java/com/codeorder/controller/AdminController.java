@@ -1,6 +1,5 @@
 package com.codeorder.controller;
 
-
 import com.codeorder.pojo.Admin;
 import com.codeorder.service.AdminService;
 import com.codeorder.utils.CommonResult;
@@ -11,9 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 @RestController
-@RequestMapping("admin")
+@RequestMapping("/admin")
 public class AdminController {
     @Autowired
     private AdminService adminService;
@@ -51,10 +51,32 @@ public class AdminController {
         return CommonResult.failed("添加失败");
     }
 
-    @GetMapping("info")
+    @GetMapping("/info")
     public CommonResult<Admin> getInfo(HttpServletRequest request,HttpServletResponse response){
         return CommonResult.success(null);
     }
 
+    @PostMapping("/modifyPassword")
+    public CommonResult<String> modifyPassword(@RequestBody Map<String,Object> map) throws Exception {
+        System.out.println(map);
+        Integer id = (Integer) map.get("id");
+        String oldPassword = (String)map.get("oldPassword");
+        String newPassword = (String)map.get("newPassword");
+        String confirmPassword = (String)map.get("confirmPassword");
+        String oldmd5Password = MD5Utils.getMD5Str(oldPassword);
+        if(adminService.queryAdminByIdAndPassword(id,oldmd5Password)==null){
+            return CommonResult.failed("修改失败");
+        }else{
+            if(newPassword.equals(confirmPassword)){
+                Admin admin = new Admin();
+                admin.setId(id);
+                String md5Password = MD5Utils.getMD5Str(newPassword);
+                admin.setPassword(md5Password);
+                adminService.updatePassword(admin);
+            }else
+                return CommonResult.failed("修改失败");
+        }
+        return CommonResult.success("修改成功");
+    }
 
 }

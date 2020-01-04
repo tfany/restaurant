@@ -18,11 +18,11 @@
   <select id="queryOrderByTime" resultType="com.codeorder.pojo.Order">
   select * from `order`
   <where>
-    <if test="startTime != null and startTime !=''">
-      createDate &gt; #{startTime,jdbcType=DATE}
+    <if test="startTime != null">
+      createDate &gt;= #{startTime,jdbcType=DATE}
     </if>
-    <if test="endTime != null and endTime !=''">
-      createDate &lt; #{endTime,jdbcType=DATE}
+    <if test="endTime != null">
+      and createDate &lt;= #{endTime,jdbcType=DATE}
     </if>
   </where>
   </select>
@@ -34,18 +34,20 @@
   <select id="queryById" resultType="com.codeorder.pojo.Order">
     select * from `order` where id = #{orderId}
   </select>
-  <!--改变订单状态-->
+  <!--改变订单支付状态-->
   <update id="changeStatus" parameterType="com.codeorder.pojo.Order" >
-    update `order` set `status`= #{status}
+    update `order` set `payStatus`= #{payStatus}
     where `number`= #{number}
   </update>
   <!--通过number查id-->
   <select id="getOrderIdByNumber" resultType="int">
   select id from `order`
   where `number` = #{number}
-
   </select>
 
+  <update id="updateOrderStatusById" parameterType="int">
+    update `order` set status = #{status} where id = #{id}
+  </update>
   <!--购物车下单添加信息到订单-->
   <insert id="placeOrder" parameterType="com.codeorder.pojo.Order" useGeneratedKeys="true" keyProperty="id">
     insert into `order` (`number`,tableNum,createDate,price,payStatus,status)
@@ -54,7 +56,8 @@
 
   <!--下单后更新订单信息到订单-->
   <update id="updateOrder" parameterType="com.codeorder.pojo.Order">
-    update `order` set `number` = #{number} , tableNum = #{tableNum} , createDate = #{createDate} ,
+    update `or
+    der` set `number` = #{number} , tableNum = #{tableNum} , createDate = #{createDate} ,
     price = #{price} , payStatus = #{payStatus} , status = #{status}   where id=#{id}
   </update>
 

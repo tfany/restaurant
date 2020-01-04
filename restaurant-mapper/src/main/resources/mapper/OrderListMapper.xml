@@ -12,6 +12,18 @@
     <result column="Status" property="status" jdbcType="INTEGER" />
   </resultMap>
 
+  <update id="updateOrderListStatus" parameterType="com.codeorder.pojo.OrderList">
+    update orderlist set status = #{status} where id = #{id}
+  </update>
+
+  <select id="queryAllOrderListStatus" resultType="int">
+    select status from orderlist
+  </select>
+
+  <select id="queryOrderListByOrderId" parameterType="int" resultType="int">
+    select status from orderlist where orderId = #{orderId}
+  </select>
+
   <!-- 添加订单项-->
   <insert id="placeOrderList" parameterType="com.codeorder.pojo.OrderList" useGeneratedKeys="true" keyProperty="id">
     insert into orderlist (orderId,dishId,quantity,status)

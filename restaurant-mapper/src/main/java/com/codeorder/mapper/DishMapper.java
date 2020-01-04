@@ -11,7 +11,8 @@ public interface DishMapper extends MyMapper<Dish> {
 
 
     int addDish(Dish dish);
-    List<Dish> queryDishByName(String dishName);
+
+    List<Dish> queryDishByName(@Param("name")String name);
 
     List<Dish> queryAllDish();
 
@@ -22,11 +23,9 @@ public interface DishMapper extends MyMapper<Dish> {
     List<Dish> queryPriceByDishId(@Param("id")Integer id);
 
     List<Dish> queryDishByDishName(@Param("name")String name);
-
     List<Dish> queryDishByCategoryAndName(@Param("categoryId")Integer categoryId,@Param("name")String name);
 
     int deleteDishByCategoryId(@Param("categoryId")Integer categoryId);
-
 
     int deleteDishById(@Param("id")Integer id);
 

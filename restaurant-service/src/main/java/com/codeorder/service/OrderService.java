@@ -16,5 +16,12 @@ public interface OrderService {
     Order queryById(Integer orderId);
     Integer changeStatus(String number,Integer newStatus);
     Integer getOrderIdByNumber(String number);
+
+    /**
+     * 修改订单完单状态
+     * @param id
+     * @return
+     */
+    int updateOrderStatusById(Integer id);
     List<OrderList> queryOrderByOrderId(Integer orderId);
 }

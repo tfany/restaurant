@@ -34,12 +34,12 @@ public class DishController {
         return CommonResult.success(dishService.queryDishByCategoryOrName(pageNum,pageSize,name,categoryId));
     }
 
-    @GetMapping("/deleteDish")
+    @PostMapping("/deleteDish")
     public CommonResult<Object> deleteDish(Integer id){
         return CommonResult.success(dishService.deleteDish(id));
     }
 
-    @PostMapping("/updateDish")
+    @PostMapping("/updat,eDish")
     public CommonResult<Object> updateDish(@RequestBody Dish dish){
         return CommonResult.success(dishService.updateDish(dish));
     }
