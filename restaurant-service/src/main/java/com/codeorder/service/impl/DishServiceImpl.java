@@ -21,12 +21,8 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public int addDish(Dish dish) {
-<<<<<<< HEAD
         if (dish.getName()==null||dish.getPrice()==null||dish.getCategoryId()==null||dish.getPrice()<0){     //添加的菜品没有名字或价格或分类
-=======
 
-        if (dish.getName()==null||dish.getPrice()==null||dish.getCategoryId()==null){     //添加的菜品没有名字或价格或分类
->>>>>>> dd8ee70afca6060283c665cd51192648940d519e
             return -1;
         }
         List<Dish> result = dishMapper.queryDishByName(dish.getName());
