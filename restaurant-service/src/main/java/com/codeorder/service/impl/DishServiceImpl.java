@@ -28,7 +28,6 @@ public class DishServiceImpl implements DishService {
         List<Dish> result = dishMapper.queryDishByName(dish.getName());
         if(result.size()!=0)          //菜单中已有该菜品
             return 0;
-        System.out.println(dishMapper.addDish(dish));
         return dishMapper.addDish(dish);
 
     }
