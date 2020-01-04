@@ -123,4 +123,15 @@ public class Shop {
     public void setNotice(String notice) {
         this.notice = notice;
     }
+
+    @Override
+    public String toString() {
+        return "Shop{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", url='" + url + '\'' +
+                ", notice='" + notice + '\'' +
+                '}';
+    }
 }
