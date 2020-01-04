@@ -56,8 +56,7 @@
 
   <!--下单后更新订单信息到订单-->
   <update id="updateOrder" parameterType="com.codeorder.pojo.Order">
-    update `or
-    der` set `number` = #{number} , tableNum = #{tableNum} , createDate = #{createDate} ,
+    update `order` set `number` = #{number} , tableNum = #{tableNum} , createDate = #{createDate} ,
     price = #{price} , payStatus = #{payStatus} , status = #{status}   where id=#{id}
   </update>
 
