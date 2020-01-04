@@ -94,7 +94,7 @@ public class OrderServiceImpl implements OrderService {
      * 查看订单详情
      */
     public List<OrderList> queryOrderByOrderId(Integer orderId) {
-        return orderMapper.queryOrderByOrderId(orderId);
+        return orderListMapper.queryOrderByOrderId(orderId);
     }
 
     @Override

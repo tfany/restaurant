@@ -51,7 +51,7 @@ public class OrderController {
 
     @GetMapping("/orderDetail")
     public CommonResult<Object> orderDetail(Integer orderId){
-        if(orderService.queryOrderByOrderId(orderId)==null)
+        if(orderService.queryOrderByOrderId(orderId).size()==0)
             return CommonResult.failed("不存在该订单");
         return CommonResult.success(orderService.queryOrderByOrderId(orderId));
     }

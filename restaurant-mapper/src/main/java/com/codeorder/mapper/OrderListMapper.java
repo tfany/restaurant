@@ -12,4 +12,5 @@ public interface OrderListMapper extends MyMapper<OrderList> {
      * @return
      */
     int placeOrderList(OrderList orderList);
+    List<OrderList> queryOrderByOrderId(Integer orderId);
 }
