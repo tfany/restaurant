@@ -26,6 +26,8 @@ public class DishController {
             return CommonResult.failed("该菜品已存在！");
         if(result==-1)
             return CommonResult.failed("添加菜品失败！");              //添加的菜品没有名字或价格或分类
+        if(result==-2)
+            return CommonResult.failed("该菜品所属菜品分类未找到！");
         return CommonResult.success(null);
     }
 

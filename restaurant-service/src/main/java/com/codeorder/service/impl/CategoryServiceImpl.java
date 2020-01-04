@@ -58,10 +58,6 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
 
-    //@Override
-    //public int updateCategory(String categoryName){
-
-    //}
 
 
 
