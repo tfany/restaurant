@@ -39,13 +39,17 @@ public class DishController {
         return CommonResult.success(dishService.deleteDish(id));
     }
 
-    @PostMapping("/updat,eDish")
+    @PostMapping("/updateDish")
     public CommonResult<Object> updateDish(@RequestBody Dish dish){
         return CommonResult.success(dishService.updateDish(dish));
     }
 
-    @GetMapping("/updateInfo/{id}")
-    public CommonResult<Object> queryDishById(@PathVariable Integer id){
+    @GetMapping("/queryDishById")
+    public CommonResult<Object> queryDishById(Integer id){
+        Dish dish=dishService.queryDishById(id);
+        if(dish==null){
+            return CommonResult.failed("未查到信息");
+        }
         return CommonResult.success(dishService.queryDishById(id));
     }
 }
