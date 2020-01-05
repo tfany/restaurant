@@ -18,4 +18,8 @@
   <select id="getCategoryById" resultType="com.codeorder.pojo.Category">
     select * from category where id = #{categoryId}
   </select>
+
+  <select id="queryAllCategory" resultType="com.codeorder.pojo.Category">
+    select * from category
+  </select>
 </mapper>

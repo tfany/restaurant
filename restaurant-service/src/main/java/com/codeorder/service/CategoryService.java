@@ -12,4 +12,6 @@ public interface CategoryService {
 
     Map<String,Object> categoryList(Integer pageNum,Integer pageSize);
     Category getCategoryById(int categoryId);
+
+    List<Category> queryAllCategory();
 }

@@ -11,7 +11,7 @@ import java.util.Map;
 public interface DishService {
 
     Map<String,Object> queryAllDish(int pageNum, int pageSize);
-    List<Dish> queryAllDish();
+    List<Dish> queryAllDishNoPage();
 
     int addDish(Dish dish);
     Map<String,Object> queryDishByCategoryOrName(Integer pageNum,Integer pageSize,String name,Integer categoryId);
@@ -20,10 +20,11 @@ public interface DishService {
 
     int updateDish(Dish dish);
 
-
     Dish queryDishById(Integer id);
 
     int deleteByCategoryId(Integer categoryId);
+
+    List<Dish> queryDishByCategoryId(Integer categoryId);
 
 
 }

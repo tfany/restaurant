@@ -54,6 +54,11 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.getCategoryById(categoryId);
     }
 
+    @Override
+    public List<Category> queryAllCategory() {
+        return categoryMapper.queryAllCategory();
+    }
+
 
     //@Override
     //public int updateCategory(String categoryName){
