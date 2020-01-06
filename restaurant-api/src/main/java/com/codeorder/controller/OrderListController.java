@@ -24,7 +24,7 @@ public class OrderListController {
     private OrderListService orderListService;
 
     @GetMapping("/getOrderListDetail")
-    public CommonResult<Object> getOrderListDetail(Integer pageNum, Integer pageSize, Integer orderId){
+    public CommonResult<Object> getOrderListDetail(Integer orderId){
         return CommonResult.success(orderListService.getOrderListDetail(orderId));
     }
 
