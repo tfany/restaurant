@@ -59,17 +59,18 @@ public class AdminController {
     @PostMapping("/modifyPassword")
     public CommonResult<String> modifyPassword(@RequestBody Map<String,Object> map) throws Exception {
         System.out.println(map);
-        Integer id = (Integer) map.get("id");
+        String userName = (String)map.get("userName");
+//        Integer id = (Integer) map.get("id");
         String oldPassword = (String)map.get("oldPassword");
         String newPassword = (String)map.get("newPassword");
         String confirmPassword = (String)map.get("confirmPassword");
         String oldmd5Password = MD5Utils.getMD5Str(oldPassword);
-        if(adminService.queryAdminByIdAndPassword(id,oldmd5Password)==null){
+        if(adminService.queryAdminByNameAndPassword(userName,oldmd5Password)==null){
             return CommonResult.failed("修改失败");
         }else{
             if(newPassword.equals(confirmPassword)){
                 Admin admin = new Admin();
-                admin.setId(id);
+                admin.setName(userName);
                 String md5Password = MD5Utils.getMD5Str(newPassword);
                 admin.setPassword(md5Password);
                 adminService.updatePassword(admin);

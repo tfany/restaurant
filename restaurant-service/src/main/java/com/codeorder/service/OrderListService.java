@@ -1,7 +1,9 @@
 package com.codeorder.service;
 
 import com.codeorder.pojo.OrderList;
+import com.codeorder.pojo.OrderListDtoToUI;
 
+import java.util.List;
 import java.util.Map;
 
 public interface OrderListService {
@@ -16,6 +18,6 @@ public interface OrderListService {
     /**
      * 返回封装的订单明细
      */
-    Map<String,Object> getOrderListDetail(Integer orderId,Integer pageSize,Integer pageNum);
+    List<OrderListDtoToUI> getOrderListDetail(Integer orderId);
 
 }

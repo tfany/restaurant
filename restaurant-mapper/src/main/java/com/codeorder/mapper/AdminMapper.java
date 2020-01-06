@@ -26,4 +26,6 @@ public interface AdminMapper extends MyMapper<Admin> {
      * @return
      */
     Admin queryAdminByIdAndPassword(@Param("id") Integer id , @Param("password") String password);
+
+    Admin queryAdminByNameAndPassword(@Param("name") String name, @Param("password") String password);
 }

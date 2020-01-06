@@ -11,4 +11,6 @@ public interface CategoryService {
     int updateCategory(Category category);
     Map<String,Object> categoryList(Integer pageNum,Integer pageSize);
     Category getCategoryById(int categoryId);
+
+    List<Category> queryAllCategory();
 }

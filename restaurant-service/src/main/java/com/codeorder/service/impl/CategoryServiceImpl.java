@@ -57,6 +57,20 @@ public class CategoryServiceImpl implements CategoryService {
     public Category getCategoryById(int categoryId) {
         return categoryMapper.getCategoryById(categoryId);
     }
+
+    @Override
+    public List<Category> queryAllCategory() {
+        return categoryMapper.queryAllCategory();
+    }
+
+
+    //@Override
+    //public int updateCategory(String categoryName){
+
+    //}
+
+
+
     @Override
     public int updateCategory(Category category) {
         if (category.getName().trim().isEmpty()){     //添加的分类名字

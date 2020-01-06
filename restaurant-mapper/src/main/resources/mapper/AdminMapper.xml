@@ -22,7 +22,7 @@
   </insert>
 
   <update id="updatePassword" parameterType="com.codeorder.pojo.Admin">
-    update admin set password = #{password} where id = #{id}
+    update admin set password = #{password} where id = #{id} or name =  #{name}
   </update>
 
   <select id="queryAdminById" parameterType="int" resultType="com.codeorder.pojo.Admin">
@@ -31,5 +31,9 @@
 
   <select id="queryAdminByIdAndPassword" resultType="com.codeorder.pojo.Admin">
     select * from admin where id = #{id} and password = #{password}
+  </select>
+
+  <select id="queryAdminByNameAndPassword" resultType="com.codeorder.pojo.Admin">
+    select * from admin where name = #{name} and password = #{password}
   </select>
 </mapper>
