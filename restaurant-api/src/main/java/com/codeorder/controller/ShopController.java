@@ -5,6 +5,9 @@ import com.codeorder.utils.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @RestController
 @RequestMapping("manager")
@@ -14,9 +17,18 @@ public class ShopController {
     private ShopService shopService;
 
     @GetMapping("/shopInfo")
-    public CommonResult<Shop> shopInfo(){
+    public CommonResult<Object> shopInfo(){
         Shop shop=shopService.shopInfo();
-        return CommonResult.success(shop);
+        Map<String,Object> map = new HashMap();
+        Map<String,Object> sellerMap = new HashMap();
+        sellerMap.put("name",shop.getName());
+        sellerMap.put("description","开发版 v0.0.1");
+        sellerMap.put("bulletin",shop.getNotice());
+        sellerMap.put("avatar","http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg");
+//        sellerMap.put("avatar",shop.getImage());
+        sellerMap.put("minPrice",0.1);
+        map.put("seller",sellerMap);
+        return CommonResult.success(map);
     }
     @PostMapping("/updateShop")
     public CommonResult updateShop(@RequestBody Shop shop){

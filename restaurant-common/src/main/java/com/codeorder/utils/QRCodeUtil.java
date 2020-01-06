@@ -34,13 +34,13 @@ public class QRCodeUtil {
         IMAGE_TYPE.add("png");
     }
 
-    public static boolean createQRCode(int tableNum,String url){
-        String logoPath=QRCodeUtil.createLogo(String.valueOf(tableNum));
+    public static String createQRCode(int deskNum,String url){
+        String logoPath=QRCodeUtil.createLogo(String.valueOf(deskNum));
         if(!logoPath.equals(null)&&!logoPath.equals("")){
-            QRCodeUtil.zxingCodeCreate(url, "C:\\Image\\table",500, logoPath,tableNum);
-            return true;
+            String imageUrl=QRCodeUtil.zxingCodeCreate(url, "C:\\Image\\table",500, logoPath,deskNum);
+            return imageUrl;
         }
-        return false;
+        return null;
     }
 
     /**
@@ -55,7 +55,7 @@ public class QRCodeUtil {
      * @param size     生成的二维码图片尺寸 可以自定义或者默认（250）
      * @param logoPath logo的存放位置
      */
-    public static boolean zxingCodeCreate(String content, String path, Integer size, String logoPath,int tableNum) {
+    public static String zxingCodeCreate(String content, String path, Integer size, String logoPath,int deskNum) {
         try {
             //图片类型
             String imageType = "jpg";
@@ -64,7 +64,7 @@ public class QRCodeUtil {
             //获得随机数
             Random random = new Random();
             //生成二维码
-            File file = new File(path+tableNum+".jpg");
+            File file = new File(path+deskNum+".jpg");
             if (!file.exists()) {
                 file.mkdirs();
             }
@@ -73,11 +73,11 @@ public class QRCodeUtil {
             ImageIO.write(image, imageType, file);
             File file1=new File(logoPath);
             file1.delete();
-            //QRCodeUtil.zxingCodeCreate(file, new File(logoPath),path+".jpg",tableNum);
-            return true;
+            //QRCodeUtil.zxingCodeCreate(file, new File(logoPath),path+".jpg",deskNum);
+            return file.getAbsolutePath();
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 

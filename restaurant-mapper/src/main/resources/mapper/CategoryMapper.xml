@@ -22,4 +22,8 @@
   <select id="queryAllCategory" resultType="com.codeorder.pojo.Category">
     select * from category
   </select>
+  <select id="queryCategoryByName" resultType="com.codeorder.pojo.Category">
+    select * from category where name = #{categoryName}
+  </select>
+
 </mapper>

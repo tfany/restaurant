@@ -2,6 +2,7 @@
 package com.codeorder.controller;
 
 import com.codeorder.pojo.Shop;
+import com.codeorder.service.DeskService;
 import com.codeorder.service.ShopService;
 import com.codeorder.utils.CommonResult;
 import com.codeorder.utils.QRCodeUtil;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -22,21 +25,31 @@ public class QRCodeController {
     @Autowired
     private ShopService shopService;
 
+    @Autowired
+    private DeskService deskService;
+
     /**
      *
-     * @param tableNum
+     * @param deskNum
      * @return
      */
     @PostMapping("/getQRcode")
-    public CommonResult<URL> createQRCode(@RequestParam("tableNum") int tableNum) {
+    public CommonResult<List<String>> createQRCode(@RequestParam("deskNum") Integer deskNum) {
         Shop shop=shopService.shopInfo();
         if(shop.getUrl()!=null){
-            boolean flag=QRCodeUtil.createQRCode(tableNum,shop.getUrl());
-            if(flag) {
+            String imageUrl=QRCodeUtil.createQRCode(deskNum,shop.getUrl());
+            if(!imageUrl.equals(null)&&!imageUrl.equals("")) {
                 try {
-                    URL url=new URL(shop.getUrl());
-                    return CommonResult.success(url);
-                } catch (MalformedURLException e) {
+                    int result=deskService.insertDesk(deskNum,imageUrl);
+                    if(result==1) {
+                        String url=shop.getUrl()+"/"+deskNum;
+                        List<String> list=new ArrayList<>();
+                        list.add(url);
+                        list.add(imageUrl);
+                        return CommonResult.success(list);
+                    }
+                    return CommonResult.failed("二维码存储失败");
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -44,4 +57,5 @@ public class QRCodeController {
         }
         return CommonResult.failed("请输入店铺的URL");
     }
+
 }

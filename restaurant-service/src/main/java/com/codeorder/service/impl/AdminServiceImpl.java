@@ -34,6 +34,11 @@ public class AdminServiceImpl implements AdminService {
         return adminMapper.queryAdminByIdAndPassword(id,password);
     }
 
+    @Override
+    public Admin queryAdminByNameAndPassword(String name, String password) {
+        return adminMapper.queryAdminByNameAndPassword(name, password);
+    }
+
 
     @Override
     public int updatePassword(Admin admin) {

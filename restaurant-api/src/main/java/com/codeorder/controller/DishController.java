@@ -26,6 +26,8 @@ public class DishController {
             return CommonResult.failed("该菜品已存在！");
         if(result==-1)
             return CommonResult.failed("添加菜品失败！");              //添加的菜品没有名字或价格或分类
+        if(result==-2)
+            return CommonResult.failed("该菜品所属菜品分类未找到！");
         return CommonResult.success(null);
     }
 
@@ -41,11 +43,22 @@ public class DishController {
 
     @PostMapping("/updateDish")
     public CommonResult<Object> updateDish(@RequestBody Dish dish){
-        return CommonResult.success(dishService.updateDish(dish));
+        int result = dishService.updateDish(dish);//返回更新菜品结果
+        if(result==0)                                                 //菜品已存在
+            return CommonResult.failed("该菜品已存在！");
+        if(result==-1)
+            return CommonResult.failed("更新菜品失败！");              //添加的菜品没有名字或价格或分类
+        if(result==-2)
+            return CommonResult.failed("该菜品所属菜品分类未找到！");
+        return CommonResult.success(null);
     }
 
-    @GetMapping("/updateInfo/{id}")
-    public CommonResult<Object> queryDishById(@PathVariable Integer id){
+    @GetMapping("/queryDishById")
+    public CommonResult<Object> queryDishById(Integer id){
+        Dish dish=dishService.queryDishById(id);
+        if(dish==null){
+            return CommonResult.failed("未查到信息");
+        }
         return CommonResult.success(dishService.queryDishById(id));
     }
 }

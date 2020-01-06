@@ -9,7 +9,6 @@ public interface CategoryService {
     int addCategory(String categoryName);
     int deleteCategory(int categoryId);
     int updateCategory(Category category);
-
     Map<String,Object> categoryList(Integer pageNum,Integer pageSize);
     Category getCategoryById(int categoryId);
 

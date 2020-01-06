@@ -14,4 +14,5 @@ public interface CategoryMapper extends MyMapper<Category> {
      * @return
      */
     List<Category> queryAllCategory();
+    Category queryCategoryByName(String categoryName);
 }

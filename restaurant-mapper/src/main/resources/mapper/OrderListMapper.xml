@@ -29,4 +29,15 @@
     insert into orderlist (orderId,dishId,quantity,status)
     values (#{orderId},#{dishId},#{quantity},#{status})
   </insert>
+
+  <!--查看订单详情-->
+  <select id="queryOrderByOrderId" resultType="com.codeorder.pojo.OrderList">
+    select * from orderlist where orderId = #{orderId}
+  </select>
+
+  <!-- 查看订单明细，包括菜品名，数量，价格-->
+  <select id="queryOrderDetailById" resultType="com.codeorder.pojo.OrderListDtoToUI">
+    select o.id,d.name,d.price,o.quantity from orderlist o,dish d
+    where o.dishId = d.id and o.orderId=#{orderId}
+  </select>
 </mapper>

@@ -60,8 +60,4 @@
     price = #{price} , payStatus = #{payStatus} , status = #{status}   where id=#{id}
   </update>
 
-  <!--查看订单详情-->
-  <select id="queryOrderByOrderId" resultType="com.codeorder.pojo.OrderList">
-    select * from orderlist where orderId = #{orderId}
-  </select>
 </mapper>

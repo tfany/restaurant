@@ -1,5 +1,7 @@
 package com.codeorder.service.impl;
+import com.codeorder.mapper.CategoryMapper;
 import com.codeorder.mapper.DishMapper;
+import com.codeorder.pojo.Category;
 import com.codeorder.pojo.Dish;
 import com.codeorder.pojo.Shop;
 import com.codeorder.service.DishService;
@@ -18,17 +20,21 @@ public class DishServiceImpl implements DishService {
 
     @Autowired
     private DishMapper dishMapper;
+    @Autowired
+    private CategoryMapper categoryMapper;
 
     @Override
     public int addDish(Dish dish) {
 
-        if (dish.getName()==null||dish.getPrice()==null||dish.getCategoryId()==null){     //添加的菜品没有名字或价格或分类
+        if (dish.getName().trim().isEmpty()||dish.getPrice()==null||dish.getCategoryId()==null||dish.getPrice()<0){     //添加的菜品没有名字或价格或分类
             return -1;
+        }
+        if(categoryMapper.getCategoryById(dish.getCategoryId())==null){
+            return -2;
         }
         List<Dish> result = dishMapper.queryDishByName(dish.getName());
         if(result.size()!=0)          //菜单中已有该菜品
             return 0;
-        System.out.println(dishMapper.addDish(dish));
         return dishMapper.addDish(dish);
 
     }
@@ -62,6 +68,15 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public int updateDish(Dish dish) {
+        if (dish.getName().trim().isEmpty()||dish.getPrice()==null||dish.getCategoryId()==null||dish.getPrice()<0){     //更新的菜品没有名字或价格或分类
+            return -1;
+        }
+        if(categoryMapper.getCategoryById(dish.getCategoryId())==null){
+            return -2;
+        }
+        List<Dish> result = dishMapper.queryDishByName(dish.getName());
+        if(result.size()!=0&&result.get(0).getId()!=dish.getId())          //菜单中已有该菜品
+            return 0;
         return dishMapper.updateDish(dish);
     }
 
