@@ -27,18 +27,19 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public int addCategory(String categoryName) {
-        if (categoryName.trim().isEmpty()){     //添加的分类名字
+        String nameAfterTrim=categoryName.replace(" ","");
+        if (nameAfterTrim.isEmpty()){     //添加的分类名字
             return -1;
         }
         Example example = new Example(Category.class);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("name", categoryName);
+        criteria.andEqualTo("name", nameAfterTrim);
         int count = categoryMapper.selectCountByExample(example);
         if (count > 0) {
             return 0;
         }
         Category category = new Category();
-        category.setName(categoryName);
+        category.setName(nameAfterTrim);
         return categoryMapper.insert(category);
     }
 

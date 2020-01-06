@@ -25,18 +25,14 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public int addDish(Dish dish) {
-<<<<<<< HEAD
-        if (dish.getName()==null||dish.getPrice()==null||dish.getCategoryId()==null||dish.getPrice()<0){     //添加的菜品没有名字或价格或分类
 
-=======
         if (dish.getName().trim().isEmpty()||dish.getPrice()==null||dish.getCategoryId()==null||dish.getPrice()<0){     //添加的菜品没有名字或价格或分类
->>>>>>> 13655f5d08e17b9678863ca24bde842546e2324d
             return -1;
         }
         if(categoryMapper.getCategoryById(dish.getCategoryId())==null){
             return -2;
         }
-        List<Dish> result = dishMapper.queryDishByName(dish.getName());
+        List<Dish> result = dishMapper.queryDishByName(dish.getName().replace(" ",""));
         if(result.size()!=0)          //菜单中已有该菜品
             return 0;
         return dishMapper.addDish(dish);
