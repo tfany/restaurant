@@ -37,7 +37,7 @@ public class QRCodeUtil {
     public static String createQRCode(int deskNum,String url){
         String logoPath=QRCodeUtil.createLogo(String.valueOf(deskNum));
         if(!logoPath.equals(null)&&!logoPath.equals("")){
-            String imageUrl=QRCodeUtil.zxingCodeCreate(url, "C:\\Image\\table",500, logoPath,deskNum);
+            String imageUrl=QRCodeUtil.zxingCodeCreate(url, "C:/Image/table",500, logoPath,deskNum);
             return imageUrl;
         }
         return null;
@@ -238,12 +238,12 @@ public class QRCodeUtil {
 
     public static String createLogo(String tableNum){
         try {
-            BufferedImage image=ImageIO.read(new File("C:\\Image\\logo_back4.jpg"));
+            BufferedImage image=ImageIO.read(new File("C:/Image/logo_back4.jpg"));
             Graphics g = image.getGraphics();
             g.setColor(Color.BLACK);
             g.setFont(new Font("黑体", Font.BOLD, 40));
             g.drawString(tableNum, 25, 50);
-            File file=new File("C:\\Image\\"+tableNum+".jpg");
+            File file=new File("C:/Image/"+tableNum+".jpg");
             ImageIO.write(image, "jpg", file);
             String path=file.getAbsolutePath();
             return path;
