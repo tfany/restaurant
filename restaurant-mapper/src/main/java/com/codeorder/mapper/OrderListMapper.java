@@ -2,6 +2,7 @@ package com.codeorder.mapper;
 
 import com.codeorder.my.mapper.MyMapper;
 import com.codeorder.pojo.OrderList;
+import com.codeorder.pojo.OrderListDtoToUI;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -36,4 +37,6 @@ public interface OrderListMapper extends MyMapper<OrderList> {
      */
     int placeOrderList(OrderList orderList);
     List<OrderList> queryOrderByOrderId(Integer orderId);
+
+    List<OrderListDtoToUI> queryOrderDetailById(Integer orderId);
 }

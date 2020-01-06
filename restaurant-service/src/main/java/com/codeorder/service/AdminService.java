@@ -14,6 +14,8 @@ public interface AdminService {
 
     Admin queryAdminByIdAndPassword(Integer id ,String password);
 
+    Admin queryAdminByNameAndPassword(String name ,String password);
+
     /**
      * 修改用户密码
      * @param admin

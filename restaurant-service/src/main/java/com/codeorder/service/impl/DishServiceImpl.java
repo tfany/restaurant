@@ -91,7 +91,12 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public List<Dish> queryAllDish()
+    public List<Dish> queryDishByCategoryId(Integer categoryId) {
+        return dishMapper.queryDishByCategoryId(categoryId);
+    }
+
+    @Override
+    public List<Dish> queryAllDishNoPage()
     {
         return dishMapper.queryAllDish();
     }
