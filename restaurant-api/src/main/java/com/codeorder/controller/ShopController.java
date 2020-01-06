@@ -30,6 +30,12 @@ public class ShopController {
         map.put("seller",sellerMap);
         return CommonResult.success(map);
     }
+
+    @GetMapping("/shopInformation")
+    public CommonResult<Object> shopInformation(){
+        Shop shop=shopService.shopInfo();
+        return CommonResult.success(shop);
+    }
     @PostMapping("/updateShop")
     public CommonResult updateShop(@RequestBody Shop shop){
         int result = shopService.updateShop(shop);
