@@ -32,7 +32,7 @@ public class DishServiceImpl implements DishService {
         if(categoryMapper.getCategoryById(dish.getCategoryId())==null){
             return -2;
         }
-        List<Dish> result = dishMapper.queryDishByName(dish.getName());
+        List<Dish> result = dishMapper.queryDishByName(dish.getName().replace(" ",""));
         if(result.size()!=0)          //菜单中已有该菜品
             return 0;
         return dishMapper.addDish(dish);
