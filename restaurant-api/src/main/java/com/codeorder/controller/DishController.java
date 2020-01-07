@@ -3,9 +3,11 @@ package com.codeorder.controller;
 import com.codeorder.pojo.Dish;
 import com.codeorder.service.DishService;
 import com.codeorder.utils.CommonResult;
+import com.codeorder.utils.ImageUtil;
+import com.codeorder.utils.PathUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
@@ -60,5 +62,12 @@ public class DishController {
             return CommonResult.failed("未查到信息");
         }
         return CommonResult.success(dishService.queryDishById(id));
+    }
+
+    @PostMapping("/uploadFile/{id}")
+    public CommonResult upload(@RequestParam(value = "file", required = true)MultipartFile file,@PathVariable Integer id){
+        String dishPath= PathUtil.getDishImagePath(id.toString());
+        String path = ImageUtil.generateThumbnail(file, dishPath);
+        return CommonResult.success(path);
     }
 }

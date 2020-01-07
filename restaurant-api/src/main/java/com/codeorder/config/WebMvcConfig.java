@@ -8,6 +8,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+
+        String os = System.getProperty("os.name");
+
+        System.out.println(os);
+
+        if (os.toLowerCase().startsWith("win")) {  //如果是Windows系统
+            registry.addResourceHandler("/**").addResourceLocations("file:///c:/codeorder/", "file:///home/tfany/codeorder/images/", "classpath:/static/");
+        }
     }
 }

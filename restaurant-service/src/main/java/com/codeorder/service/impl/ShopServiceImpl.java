@@ -7,6 +7,7 @@ import com.codeorder.pojo.Dish;
 import com.codeorder.pojo.Shop;
 import com.codeorder.service.DishService;
 import com.codeorder.service.ShopService;
+import com.codeorder.utils.PathUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
@@ -28,6 +29,7 @@ public class ShopServiceImpl implements ShopService {
     }
     @Override
     public int updateShop(Shop shop) {
+        PathUtil.deleteDir(PathUtil.getImgBasePath()+"shop");
         return shopMapper.updateByPrimaryKey(shop);
     }
 
