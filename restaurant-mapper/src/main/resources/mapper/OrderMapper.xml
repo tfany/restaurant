@@ -34,6 +34,10 @@
   <select id="queryById" resultType="com.codeorder.pojo.Order">
     select * from `order` where id = #{orderId}
   </select>
+
+  <select id="queryTodayOrder" resultType="com.codeorder.pojo.Order">
+    select * from `order` where status =#{status} and createDate=#{createDate}
+    </select>
   <!--改变订单支付状态-->
   <update id="changeStatus" parameterType="com.codeorder.pojo.Order" >
     update `order` set `payStatus`= #{payStatus}
