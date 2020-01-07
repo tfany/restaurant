@@ -65,7 +65,7 @@ public class AdminController {
         String newPassword = (String)map.get("newPassword");
         String confirmPassword = (String)map.get("confirmPassword");
         String oldmd5Password = MD5Utils.getMD5Str(oldPassword);
-        if(adminService.queryAdminByNameAndPassword(userName,oldmd5Password)==null){
+        if(adminService.queryAdminByNameAndPassword(userName,oldmd5Password)==null||newPassword.length()<6||newPassword.length()>15){
             return CommonResult.failed("修改失败");
         }else{
             if(newPassword.equals(confirmPassword)){
