@@ -14,6 +14,7 @@ public interface OrderService {
     Map<String,Object> queryAllOrder(Integer pageNum, Integer pageSize);
     int placeOrder(List<OrderList> detailList,Integer tableNum);
     Order queryById(Integer orderId);
+    Map<String, Object> queryTodayOrder(Integer pageNum, Integer pageSize,Integer status,String createDate);
     Integer changeStatus(String number,Integer newStatus);
     Integer getOrderIdByNumber(String number);
 

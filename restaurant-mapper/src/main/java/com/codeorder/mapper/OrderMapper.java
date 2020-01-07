@@ -27,6 +27,7 @@ public interface OrderMapper extends MyMapper<Order> {
      */
     int updateOrder(Order order);
     Order queryById(Integer orderId);
+    List<Order>  queryTodayOrder(Integer status,String createDate);
     Integer changeStatus(String number,Integer payStatus);
     Integer getOrderIdByNumber(String number);
 

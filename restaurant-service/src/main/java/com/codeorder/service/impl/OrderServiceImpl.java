@@ -103,6 +103,15 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.queryById(orderId);
     }
 
+    @Override
+    public Map<String, Object>  queryTodayOrder(Integer pageNum, Integer pageSize,Integer status,String createDate) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Order> list=orderMapper.queryTodayOrder(status,createDate);
+        PageInfo<Order> pageInfo = new PageInfo<>(list);
+        return PageUtil.getPageInfo(pageInfo,list);
+    }
+
+
     /*
     * 改变订单状态
     * */

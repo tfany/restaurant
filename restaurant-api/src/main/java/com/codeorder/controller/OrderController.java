@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("manager")
@@ -44,6 +45,12 @@ public class OrderController {
         return CommonResult.success(order);
     }
 
+    @GetMapping("/queryTodayOrder")
+    public CommonResult<Object> queryTodayOrder(Integer pageNum, Integer pageSize,Integer status){
+        Date nowTime=new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        return CommonResult.success(orderService.queryTodayOrder(pageNum,pageSize,status,df.format(nowTime)));
+    }
     @GetMapping("/queryAllOrder")
     public CommonResult<Object> queryAllOrder(Integer pageNum,Integer pageSize){
         return CommonResult.success(orderService.queryAllOrder(pageNum,pageSize));
