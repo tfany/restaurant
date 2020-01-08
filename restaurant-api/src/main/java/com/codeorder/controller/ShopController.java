@@ -28,6 +28,7 @@ public class ShopController {
 //        sellerMap.put("avatar",shop.getImage());
         sellerMap.put("minPrice",0.1);
         map.put("seller",sellerMap);
+        map.put("tableNum",2);
         return CommonResult.success(map);
     }
 
