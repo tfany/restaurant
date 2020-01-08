@@ -24,4 +24,9 @@ public class OrderListServiceImpl implements OrderListService {
         return orderListMapper.queryOrderDetailById(orderId);
     }
 
+    @Override
+    public List<OrderListDtoToUI> queryOrderDetailByIdAndStatus(Integer orderId, Integer status) {
+        return orderListMapper.queryOrderDetailByIdAndStatus(orderId,status);
+    }
+
 }

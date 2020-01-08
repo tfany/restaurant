@@ -33,7 +33,7 @@ public class OrderServiceImpl implements OrderService {
     * 按照时间段查询
     * */
     @Override
-    public Map<String, Object> queryOrderByTime(Integer pageNum, Integer pageSize,Date startTime, Date endTime) {
+    public Map<String, Object> queryOrderByTime(Integer pageNum, Integer pageSize,String startTime, String endTime) {
         if (startTime == null && endTime == null) {
             return queryAllOrder(pageNum,pageSize);
         }
@@ -96,6 +96,11 @@ public class OrderServiceImpl implements OrderService {
      */
     public List<OrderList> queryOrderByOrderId(Integer orderId) {
         return orderListMapper.queryOrderByOrderId(orderId);
+    }
+
+    @Override
+    public List<Order> queryByTable(Integer tableNum, Integer payStatus) {
+        return orderMapper.queryByTable(tableNum,payStatus);
     }
 
     @Override

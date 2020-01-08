@@ -37,7 +37,12 @@
 
   <!-- 查看订单明细，包括菜品名，数量，价格-->
   <select id="queryOrderDetailById" resultType="com.codeorder.pojo.OrderListDtoToUI">
-    select o.id,d.name,d.price,o.quantity from orderlist o,dish d
+    select o.id,d.name,d.price,o.quantity,o.status from orderlist o,dish d
     where o.dishId = d.id and o.orderId=#{orderId}
+  </select>
+  <!-- 查看订单明细，包括菜品名，数量，价格-->
+  <select id="queryOrderDetailByIdAndStatus" resultType="com.codeorder.pojo.OrderListDtoToUI">
+    select o.id,d.name,d.price,o.quantity,o.status from orderlist o,dish d
+    where o.dishId = d.id and o.orderId=#{orderId} and o.status = #{status}
   </select>
 </mapper>

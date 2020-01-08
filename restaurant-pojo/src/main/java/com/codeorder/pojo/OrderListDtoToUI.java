@@ -17,6 +17,10 @@ public class OrderListDtoToUI {
     * 单价
     * */
     private Double price;
+    /*
+    * 是否上菜
+    * */
+    private Integer status;
 
     public OrderListDtoToUI(Integer id,String dishName,Integer quantity,Double price){
         this.id=id;
@@ -51,10 +55,15 @@ public class OrderListDtoToUI {
     public void setId(Integer id) {
         this.id = id;
     }
-
     public Integer getId() {
         return id;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
 
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 }

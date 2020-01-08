@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface OrderService {
-    Map<String,Object> queryOrderByTime(Integer pageNum, Integer pageSize,Date startTime, Date endTime);
+    Map<String,Object> queryOrderByTime(Integer pageNum, Integer pageSize,String startTime, String endTime);
     Map<String,Object> queryAllOrder(Integer pageNum, Integer pageSize);
     int placeOrder(List<OrderList> detailList,Integer tableNum);
     Order queryById(Integer orderId);
@@ -25,4 +25,6 @@ public interface OrderService {
      */
     int updateOrderStatusById(Integer id);
     List<OrderList> queryOrderByOrderId(Integer orderId);
+
+    List<Order> queryByTable(Integer tableNum,Integer payStatus);
 }

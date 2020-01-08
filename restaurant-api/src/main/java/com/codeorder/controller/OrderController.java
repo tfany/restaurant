@@ -24,16 +24,7 @@ public class OrderController {
 
     @GetMapping("/queryByTime")
     public CommonResult<Object> queryByTime(Integer pageNum, Integer pageSize,String startTime,String endTime){
-        DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-        Date start;
-        Date end;
-        try{
-            start=format.parse(startTime);
-            end=format.parse(endTime);
-        }catch (ParseException e){
-            return CommonResult.failed("输入时间有误，请重新输入！");
-        }
-        return CommonResult.success(orderService.queryOrderByTime(pageNum,pageSize,start,end));
+        return CommonResult.success(orderService.queryOrderByTime(pageNum,pageSize,startTime,endTime));
     }
 
     @GetMapping("/queryById")
@@ -75,6 +66,10 @@ public class OrderController {
         if(orderService.queryOrderByOrderId(orderId).size()==0)
             return CommonResult.failed("不存在该订单");
         return CommonResult.success(orderService.queryOrderByOrderId(orderId));
+    }
+    @GetMapping("/getOrderByTable")
+    public CommonResult<Object> getOrderByTable(Integer tableNum){
+        return CommonResult.success(orderService.queryByTable(tableNum,1));
     }
 
 }
