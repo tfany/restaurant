@@ -38,4 +38,6 @@ public interface OrderMapper extends MyMapper<Order> {
     int updateOrderStatusById(@Param("id") Integer id , @Param("status") Integer status);
 
     List<OrderList> queryOrderByOrderId(Integer orderId);
+    List<Order> queryByTable(Integer tableNum,Integer payStatus);
+
 }
