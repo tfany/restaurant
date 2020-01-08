@@ -34,10 +34,10 @@ public class QRCodeUtil {
         IMAGE_TYPE.add("png");
     }
 
-    public static String createQRCode(int deskNum,String url){
-        String logoPath=QRCodeUtil.createLogo(String.valueOf(deskNum));
+    public static String createQRCode(int deskNum,String url,String image){
+        String logoPath=QRCodeUtil.createLogo(String.valueOf(deskNum),image);
         if(!logoPath.equals(null)&&!logoPath.equals("")){
-            String imageUrl=QRCodeUtil.zxingCodeCreate(url, "C:/Image/table",500, logoPath,deskNum);
+            String imageUrl=QRCodeUtil.zxingCodeCreate(url, "C:/image/table",500, logoPath,deskNum);
             return imageUrl;
         }
         return null;
@@ -236,14 +236,14 @@ public class QRCodeUtil {
         return null;
     }
 
-    public static String createLogo(String tableNum){
+    public static String createLogo(String tableNum,String imageUrl){
         try {
-            BufferedImage image=ImageIO.read(new File("C:/Image/logo_back4.jpg"));
+            BufferedImage image=ImageIO.read(new File("C:/codeorder"+imageUrl));
             Graphics g = image.getGraphics();
             g.setColor(Color.BLACK);
-            g.setFont(new Font("黑体", Font.BOLD, 40));
-            g.drawString(tableNum, 25, 50);
-            File file=new File("C:/Image/"+tableNum+".jpg");
+            g.setFont(new Font("黑体", Font.BOLD, image.getWidth()*4/7));
+            g.drawString(tableNum, image.getHeight()*1/2, image.getWidth()*8/14);
+            File file=new File("C:/image/"+tableNum+".jpg");
             ImageIO.write(image, "jpg", file);
             String path=file.getAbsolutePath();
             return path;

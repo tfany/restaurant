@@ -37,7 +37,7 @@ public class QRCodeController {
     public CommonResult<List<String>> createQRCode(@RequestParam("deskNum") Integer deskNum) {
         Shop shop=shopService.shopInfo();
         if(shop.getUrl()!=null){
-            String imageUrl=QRCodeUtil.createQRCode(deskNum,shop.getUrl());
+            String imageUrl=QRCodeUtil.createQRCode(deskNum,shop.getUrl(),shop.getImage());
             if(!imageUrl.equals(null)&&!imageUrl.equals("")) {
                 try {
                     int result=deskService.insertDesk(deskNum,imageUrl);
