@@ -20,4 +20,7 @@ public interface OrderListService {
      */
     List<OrderListDtoToUI> getOrderListDetail(Integer orderId);
 
+    List<OrderListDtoToUI> queryOrderDetailByIdAndStatus(Integer orderId,Integer status);
+
+
 }

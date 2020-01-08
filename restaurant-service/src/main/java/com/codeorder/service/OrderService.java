@@ -25,4 +25,6 @@ public interface OrderService {
      */
     int updateOrderStatusById(Integer id);
     List<OrderList> queryOrderByOrderId(Integer orderId);
+
+    List<Order> queryByTable(Integer tableNum,Integer payStatus);
 }

@@ -99,6 +99,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> queryByTable(Integer tableNum, Integer payStatus) {
+        return orderMapper.queryByTable(tableNum,payStatus);
+    }
+
+    @Override
     public Order queryById(Integer orderId) {
         return orderMapper.queryById(orderId);
     }

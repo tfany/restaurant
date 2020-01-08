@@ -39,4 +39,6 @@ public interface OrderListMapper extends MyMapper<OrderList> {
     List<OrderList> queryOrderByOrderId(Integer orderId);
 
     List<OrderListDtoToUI> queryOrderDetailById(Integer orderId);
+    List<OrderListDtoToUI> queryOrderDetailByIdAndStatus(Integer orderId,Integer status);
+
 }
