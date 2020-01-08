@@ -1,5 +1,7 @@
 package com.codeorder.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -26,6 +28,7 @@ public class Order {
     /**
      * 订单生成日期
      */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @Column(name = "createDate")
     private Date createDate;
 
