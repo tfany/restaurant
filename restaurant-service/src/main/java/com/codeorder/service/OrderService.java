@@ -10,10 +10,11 @@ import java.util.List;
 import java.util.Map;
 
 public interface OrderService {
-    Map<String,Object> queryOrderByTime(Integer pageNum, Integer pageSize,Date startTime, Date endTime);
+    Map<String,Object> queryOrderByTime(Integer pageNum, Integer pageSize,String startTime, String endTime);
     Map<String,Object> queryAllOrder(Integer pageNum, Integer pageSize);
     int placeOrder(List<OrderList> detailList,Integer tableNum);
     Order queryById(Integer orderId);
+    Map<String, Object> queryTodayOrder(Integer pageNum, Integer pageSize,Integer status,String createDate);
     Integer changeStatus(String number,Integer newStatus);
     Integer getOrderIdByNumber(String number);
 

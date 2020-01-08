@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("manager")
@@ -23,16 +24,7 @@ public class OrderController {
 
     @GetMapping("/queryByTime")
     public CommonResult<Object> queryByTime(Integer pageNum, Integer pageSize,String startTime,String endTime){
-        DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-        Date start;
-        Date end;
-        try{
-            start=format.parse(startTime);
-            end=format.parse(endTime);
-        }catch (ParseException e){
-            return CommonResult.failed("输入时间有误，请重新输入！");
-        }
-        return CommonResult.success(orderService.queryOrderByTime(pageNum,pageSize,start,end));
+        return CommonResult.success(orderService.queryOrderByTime(pageNum,pageSize,startTime,endTime));
     }
 
     @GetMapping("/queryById")
@@ -44,6 +36,12 @@ public class OrderController {
         return CommonResult.success(order);
     }
 
+    @GetMapping("/queryTodayOrder")
+    public CommonResult<Object> queryTodayOrder(Integer pageNum, Integer pageSize,Integer status){
+        Date nowTime=new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        return CommonResult.success(orderService.queryTodayOrder(pageNum,pageSize,status,df.format(nowTime)));
+    }
     @GetMapping("/queryAllOrder")
     public CommonResult<Object> queryAllOrder(Integer pageNum,Integer pageSize){
         return CommonResult.success(orderService.queryAllOrder(pageNum,pageSize));

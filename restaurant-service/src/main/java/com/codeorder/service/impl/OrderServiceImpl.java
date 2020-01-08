@@ -33,7 +33,7 @@ public class OrderServiceImpl implements OrderService {
     * 按照时间段查询
     * */
     @Override
-    public Map<String, Object> queryOrderByTime(Integer pageNum, Integer pageSize,Date startTime, Date endTime) {
+    public Map<String, Object> queryOrderByTime(Integer pageNum, Integer pageSize,String startTime, String endTime) {
         if (startTime == null && endTime == null) {
             return queryAllOrder(pageNum,pageSize);
         }
@@ -102,6 +102,15 @@ public class OrderServiceImpl implements OrderService {
     public Order queryById(Integer orderId) {
         return orderMapper.queryById(orderId);
     }
+
+    @Override
+    public Map<String, Object>  queryTodayOrder(Integer pageNum, Integer pageSize,Integer status,String createDate) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Order> list=orderMapper.queryTodayOrder(status,createDate);
+        PageInfo<Order> pageInfo = new PageInfo<>(list);
+        return PageUtil.getPageInfo(pageInfo,list);
+    }
+
 
     /*
     * 改变订单状态
