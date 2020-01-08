@@ -33,7 +33,7 @@ public class OrderServiceImpl implements OrderService {
     * 按照时间段查询
     * */
     @Override
-    public Map<String, Object> queryOrderByTime(Integer pageNum, Integer pageSize,Date startTime, Date endTime) {
+    public Map<String, Object> queryOrderByTime(Integer pageNum, Integer pageSize,String startTime, String endTime) {
         if (startTime == null && endTime == null) {
             return queryAllOrder(pageNum,pageSize);
         }

@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface OrderMapper extends MyMapper<Order> {
-    List<Order> queryOrderByTime(Date startTime, Date endTime);
+    List<Order> queryOrderByTime(String startTime, String endTime);
     List<Order> queryAllOrder();
 
 

@@ -24,16 +24,7 @@ public class OrderController {
 
     @GetMapping("/queryByTime")
     public CommonResult<Object> queryByTime(Integer pageNum, Integer pageSize,String startTime,String endTime){
-        DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-        Date start;
-        Date end;
-        try{
-            start=format.parse(startTime);
-            end=format.parse(endTime);
-        }catch (ParseException e){
-            return CommonResult.failed("输入时间有误，请重新输入！");
-        }
-        return CommonResult.success(orderService.queryOrderByTime(pageNum,pageSize,start,end));
+        return CommonResult.success(orderService.queryOrderByTime(pageNum,pageSize,startTime,endTime));
     }
 
     @GetMapping("/queryById")
