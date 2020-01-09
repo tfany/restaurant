@@ -37,7 +37,7 @@ public class OrderListController {
         if(orderId==null){
             return CommonResult.failed("未查到相关订单！");
         }
-        return CommonResult.success(orderListService.queryOrderDetailByIdAndStatus(orderId,1));
+        return CommonResult.success(orderListService.queryOrderDetailByIdAndStatus(orderId,0));
     }
 
 }
