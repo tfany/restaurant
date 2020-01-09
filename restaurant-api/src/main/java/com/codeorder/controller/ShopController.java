@@ -27,8 +27,8 @@ public class ShopController {
         sellerMap.put("name",shop.getName());
         sellerMap.put("description","开发版 v0.0.1");
         sellerMap.put("bulletin",shop.getNotice());
-        sellerMap.put("avatar","http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg");
-//        sellerMap.put("avatar",shop.getImage());
+//        sellerMap.put("avatar","http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg");
+        sellerMap.put("avatar",shop.getImage());
         sellerMap.put("minPrice",0.1);
         map.put("seller",sellerMap);
         map.put("tableNum",2);
