@@ -52,6 +52,10 @@
   <update id="updateOrderStatusById" parameterType="int">
     update `order` set status = #{status} where id = #{id}
   </update>
+
+  <update id="updateOrderPriceById" parameterType="int">
+    update `order` set price = #{price} where id = #{id}
+  </update>
   <!--购物车下单添加信息到订单-->
   <insert id="placeOrder" parameterType="com.codeorder.pojo.Order" useGeneratedKeys="true" keyProperty="id">
     insert into `order` (`number`,tableNum,createDate,price,payStatus,status)
