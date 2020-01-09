@@ -77,9 +77,6 @@ public class OrderServiceImpl implements OrderService {
             orderList.setStatus(1);
             System.out.println(orderList.getQuantity());
             orderListMapper.placeOrderList(orderList);
-            for(Dish dish: dishList) {
-                total += dish.getPrice() * orderList.getQuantity();
-            }
         }
         order.setNumber(number);
         order.setTableNum(tableNum);

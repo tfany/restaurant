@@ -29,7 +29,7 @@ public class ShopServiceImpl implements ShopService {
     }
     @Override
     public int updateShop(Shop shop) {
-        PathUtil.deleteDir(PathUtil.getImgBasePath()+"shop");
+        PathUtil.deleteFiles(PathUtil.getImgBasePath()+"shop");
         return shopMapper.updateByPrimaryKey(shop);
     }
 
