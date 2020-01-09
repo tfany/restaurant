@@ -135,5 +135,10 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.updateOrderStatusById(id,0);
     }
 
+    @Override
+    public int updateOrderPriceById(Integer id,Integer price) {
+        return orderMapper.updateOrderPriceById(id,price);
+    }
+
 
 }
