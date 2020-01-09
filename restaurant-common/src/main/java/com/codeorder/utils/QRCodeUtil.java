@@ -5,6 +5,7 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import net.coobird.thumbnailator.Thumbnails;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -248,8 +249,13 @@ public class QRCodeUtil {
             g.setColor(Color.BLACK);
             g.setFont(new Font("黑体", Font.BOLD, image.getWidth()*4/7));
             g.drawString(tableNum, image.getHeight()*1/2, image.getWidth()*8/14);
-            File file=new File(PathUtil.getImgBasePath()+"table/"+tableNum+ImageUtil.getRandomFileName()+".jpg");
-            ImageIO.write(image, "jpg", file);
+            File file2=new File(PathUtil.getImgBasePath()+"table/"+tableNum);
+            if(!file2.exists()){
+                file2.mkdirs();
+            }
+            File file=new File(file1.getAbsolutePath()+ImageUtil.getRandomFileName()+".jpg");
+            Thumbnails.of(image).scale(1.0)
+                    .toFile(file);
             String path=file.getAbsolutePath();
             return path;
         } catch (IOException e) {
