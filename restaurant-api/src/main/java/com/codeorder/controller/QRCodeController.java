@@ -39,7 +39,7 @@ public class QRCodeController {
                 try {
                     int result=deskService.insertDesk(deskNum,imageUrl);
                     if(result==1) {
-                        String url=shop.getUrl()+"/"+deskNum;
+                        String url=shop.getUrl()+"?tableNum="+deskNum;
                         Map<String,Object> map=new HashMap<>();
                         map.put("shopUrl",shop.getUrl());
                         map.put("imageUrl",imageUrl);
