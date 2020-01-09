@@ -37,7 +37,8 @@ public class QRCodeUtil {
     public static String createQRCode(int deskNum,String url,String image){
         String logoPath=QRCodeUtil.createLogo(String.valueOf(deskNum),image);
         if(!logoPath.equals(null)&&!logoPath.equals("")){
-            String imageUrl=QRCodeUtil.zxingCodeCreate(url, "C:/image/table",500, logoPath,deskNum);
+            String path="table/"+deskNum+"/"+ImageUtil.getRandomFileName()+".jpg";
+            String imageUrl=QRCodeUtil.zxingCodeCreate(url, path,500, logoPath,deskNum);
             return imageUrl;
         }
         return null;
@@ -64,7 +65,8 @@ public class QRCodeUtil {
             //获得随机数
             Random random = new Random();
             //生成二维码
-            File file = new File(path+deskNum+".jpg");
+            String imagePath=PathUtil.getImgBasePath()+path;
+            File file = new File(imagePath);
             if (!file.exists()) {
                 file.mkdirs();
             }
@@ -74,7 +76,7 @@ public class QRCodeUtil {
             File file1=new File(logoPath);
             file1.delete();
             //QRCodeUtil.zxingCodeCreate(file, new File(logoPath),path+".jpg",deskNum);
-            return file.getAbsolutePath();
+            return "/"+path;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -238,12 +240,15 @@ public class QRCodeUtil {
 
     public static String createLogo(String tableNum,String imageUrl){
         try {
-            BufferedImage image=ImageIO.read(new File("C:/codeorder"+imageUrl));
+            String imagePath=imageUrl.substring(1);
+            String str1=PathUtil.getImgBasePath()+imagePath;
+            File file1 = new File(str1);
+            BufferedImage image=ImageIO.read(file1);
             Graphics g = image.getGraphics();
             g.setColor(Color.BLACK);
             g.setFont(new Font("黑体", Font.BOLD, image.getWidth()*4/7));
             g.drawString(tableNum, image.getHeight()*1/2, image.getWidth()*8/14);
-            File file=new File("C:/image/"+tableNum+".jpg");
+            File file=new File(PathUtil.getImgBasePath()+"table/"+tableNum+ImageUtil.getRandomFileName()+".jpg");
             ImageIO.write(image, "jpg", file);
             String path=file.getAbsolutePath();
             return path;
