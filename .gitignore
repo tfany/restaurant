@@ -31,3 +31,13 @@ build/
 ### VS Code ###
 .vscode/
 /restaurant-api/src/main/resources/static/
+restaurant-api/src/test/
+restaurant-common/src/main/resources/
+restaurant-common/src/test/
+restaurant-mapper/src/test/
+restaurant-pojo/src/main/resources/
+restaurant-pojo/src/test/
+restaurant-service/src/main/resources/
+restaurant-service/src/test/
+src/main/java/
+src/main/resources/static/
